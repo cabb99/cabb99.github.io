@@ -1,0 +1,77 @@
+/* basic page */
+body {
+    margin: 0;
+    background: #0e1117;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: auto;
+    padding: 1rem;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    background: #111;
+    padding: 0.5rem 1rem;
+    z-index: 10;
+  }
+  #languageSwitcher {
+    margin-left: 0.5rem;
+  }
+  
+  /* flowchart container */
+  .flowchart {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 3rem);
+    overflow: hidden;
+  }
+  
+  /* group box styling */
+  .group-box {
+    position: absolute;
+    border: 1px dashed #aaa;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .group-box::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -0.8rem;
+    left: 1rem;
+    background: #111;
+    padding: 0 0.5rem;
+    font-size: 0.85rem;
+    color: #ccc;
+    pointer-events: none;
+  }
+  
+  /* nodes */
+  .node {
+    position: absolute;
+    padding: 0.8rem 1.2rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    cursor: grab;
+    text-align: center;
+    user-select: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .node:hover {
+    transform: scale(1.05);
+  }
+  .node.forcefield { background: #fff3c4; color: #111; }
+  .node.analysis    { background: #c0eec0; color: #111; }
+  .node.training    { background: #d6d4f7; color: #111; }
+  .node.utility     { background: #b2dcf2; color: #111; }
+  .node.external    { border: 2px dashed #888; }
+  
+  /* canvas underlay */
+  #connections {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  /* legend (optional, you could also render it from config.json) */
+  
