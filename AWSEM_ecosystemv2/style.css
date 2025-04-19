@@ -32,6 +32,7 @@ body {
     border: 1px dashed #aaa;
     border-radius: 8px;
     padding: 1rem;
+    z-index: 0;
   }
   .group-box::before {
     content: attr(data-label);
@@ -44,7 +45,7 @@ body {
     color: #ccc;
     pointer-events: none;
   }
-  
+
   /* nodes */
   .node {
     position: absolute;
@@ -55,6 +56,8 @@ body {
     text-align: center;
     user-select: none;
     transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 1;
+    position: absolute;
   }
   .node:hover {
     transform: scale(1.05);

@@ -138,23 +138,34 @@ function drawArrow(a,b,styleType) {
   ctx.fill();
 }
 
-// keep group‑boxes just big enough to enclose their nodes
 function updateGroupBox(group) {
-  const nodes = Array.from(group.querySelectorAll('.node'));
-  const rects = nodes.map(n=>n.getBoundingClientRect());
-  if (!rects.length) return;
-  const xs = rects.map(r => [r.left, r.right]).flat(),
-        ys = rects.map(r => [r.top,  r.bottom]).flat();
-  const minX = Math.min(...xs)-10 + window.scrollX,
-        maxX = Math.max(...xs)+10 + window.scrollX,
-        minY = Math.min(...ys)-10 + window.scrollY,
-        maxY = Math.max(...ys)+10 + window.scrollY;
-  Object.assign(group.style, {
-    left: minX+'px', top: minY+'px',
-    width: (maxX-minX)+'px',
-    height:(maxY-minY)+'px'
-  });
-}
+    const nodes = Array.from(document.querySelectorAll(`.node`))
+      .filter(n => n.closest('.group-box') === group);
+    if (nodes.length === 0) return;
+  
+    // Use left/top style values (absolute positions)
+    const xs = nodes.map(n => parseFloat(n.style.left));
+    const ys = nodes.map(n => parseFloat(n.style.top));
+    const ws = nodes.map(n => n.offsetWidth);
+    const hs = nodes.map(n => n.offsetHeight);
+  
+    const pad = 20;
+  
+    const minX = Math.min(...xs) - pad;
+    const minY = Math.min(...ys) - pad;
+    const maxX = Math.max(...xs.map((x, i) => x + ws[i])) + pad;
+    const maxY = Math.max(...ys.map((y, i) => y + hs[i])) + pad;
+  
+    Object.assign(group.style, {
+      left: `${minX}px`,
+      top: `${minY}px`,
+      width: `${maxX - minX}px`,
+      height: `${maxY - minY}px`
+    });
+  }
+  
+  
+  
 
 function makeDraggable(el) {
     let dragging = false;

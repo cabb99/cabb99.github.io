@@ -5,24 +5,21 @@
       "Utilities",
       "DNA forcefield",
       "Actin simulations",
-      "Cryo-EM term",
-      "Structure-based model",
+      "Cryo‑EM term",
+      "Structure‑based model",
       "Chromosome forcefield",
       "Other groups"
     ],
     "groupLabels": {
-      "AWSEM": {
-        "en": "AWSEM protein forcefield",
-        "es": "Campo fuerza AWSEM"
-      },
-      "Utilities": { "en": "Utilities", "es": "Utilidades" },
-      "Analysis": { "en":"Analysis","es":"Análisis" },
-      "DNA forcefield": { "en": "DNA forcefield", "es": "Campo fuerza ADN" },
-      "Actin simulations": { "en": "Actin simulations", "es": "Simulaciones de actina" },
-      "Cryo-EM term": { "en": "Cryo-EM bias term", "es": "Bias de criomicroscopía electrónica" },
-      "Structure-based model": { "en": "SBM protein forcefield", "es": "Campo fuerza SBM" },
-      "Chromosome forcefield": { "en": "Chromosome forcefield", "es": "Campo fuerza cromosomas" },
-      "Other groups": { "en": "Other groups", "es": "Otros grupos" }
+      "AWSEM":                 { "en": "AWSEM protein forcefield",  "es": "Campo fuerza AWSEM" },
+      "Analysis":              { "en": "Analysis",                   "es": "Análisis" },
+      "Utilities":             { "en": "Utilities",                  "es": "Utilidades" },
+      "DNA forcefield":        { "en": "DNA forcefield",             "es": "Campo fuerza ADN" },
+      "Actin simulations":     { "en": "Actin simulations",          "es": "Simulaciones de actina" },
+      "Cryo‑EM term":          { "en": "Cryo‑EM term",               "es": "Término Cryo‑EM" },
+      "Structure‑based model": { "en": "SBM protein forcefield",     "es": "Campo fuerza SBM" },
+      "Chromosome forcefield": { "en": "Chromosome forcefield",      "es": "Campo fuerza cromosomas" },
+      "Other groups":          { "en": "Other groups",               "es": "Otros grupos" }
     },
     "nodes": [
       {
@@ -32,14 +29,11 @@
         "external": false,
         "link": "#",
         "linkType": "default",
-        "x": 300,
-        "y":  80,
+        "x": 100,
+        "y": 100,
         "connects": ["openawsem","frustrometer","molscene"],
         "label": { "en": "AWESOME", "es": "AWESOME" },
-        "tooltip": {
-          "en": "AWESOME: training AWSEM parameters",
-          "es": "AWESOME: Entrenamiento de parámetros para el campo de fuerza AWSEM"
-        }
+        "tooltip": { "en": "AWESOME: training AWSEM parameters", "es": "AWESOME: Entrenamiento de parámetros" }
       },
       {
         "id": "molscene",
@@ -48,14 +42,11 @@
         "external": false,
         "link": "#",
         "linkType": "default",
-        "x": 600,
-        "y":  80,
+        "x": 300,
+        "y": 100,
         "connects": ["awesome","openawsem","open3spn2","openfit"],
         "label": { "en": "MolScene", "es": "MolScene" },
-        "tooltip": {
-          "en": "MolScene: Molecular scene visualization",
-          "es": "MolScene: Visualización de escenas moleculares"
-        }
+        "tooltip": { "en": "MolScene: molecular scene visualization", "es": "MolScene: Visualización molecular" }
       },
       {
         "id": "awsemmd",
@@ -64,14 +55,11 @@
         "external": true,
         "link": "#",
         "linkType": "default",
-        "x": 100,
+        "x": 0,
         "y": 200,
         "connects": ["frustrometer"],
         "label": { "en": "AWSEM‑MD (Server)", "es": "AWSEM‑MD (Servidor)" },
-        "tooltip": {
-          "en": "AWSEM‑MD: AWSEM with MD simulations (external)",
-          "es": "AWSEM‑MD: Implementación de AWSEM con simulaciones MD (servidor externo)"
-        }
+        "tooltip": { "en": "AWSEM‑MD with MD simulations", "es": "AWSEM‑MD con simulaciones MD" }
       },
       {
         "id": "frustrometer",
@@ -80,14 +68,11 @@
         "external": true,
         "link": "#",
         "linkType": "default",
-        "x": 300,
+        "x": 100,
         "y": 200,
         "connects": ["qvalue"],
         "label": { "en": "Frustratometer", "es": "Frustratometer" },
-        "tooltip": {
-          "en": "Frustratometer: structural frustration measurement tool",
-          "es": "Frustratometer: Herramienta para medir frustración estructural"
-        }
+        "tooltip": { "en": "Structural frustration measurement", "es": "Medición de frustración estructural" }
       },
       {
         "id": "openawsem",
@@ -96,46 +81,37 @@
         "external": false,
         "link": "#",
         "linkType": "integrable",
-        "x": 500,
+        "x": 200,
         "y": 200,
         "connects": ["awsemtools","qvalue","open3spn2","openfit","openactin"],
         "label": { "en": "OpenAWSEM", "es": "OpenAWSEM" },
-        "tooltip": {
-          "en": "OpenAWSEM: open forcefield for proteins",
-          "es": "OpenAWSEM: Campo de fuerza abierto para proteínas"
-        }
+        "tooltip": { "en": "Open forcefield for proteins", "es": "Campo libre para proteínas" }
       },
       {
         "id": "qvalue",
-        "group": "Analysis",
+        "group": "AWSEM",
         "type": "analysis",
         "external": false,
         "link": "#",
         "linkType": "default",
-        "x": 300,
+        "x": 100,
         "y": 300,
         "connects": ["opensmog"],
         "label": { "en": "Qvalue", "es": "Qvalue" },
-        "tooltip": {
-          "en": "Qvalue: structure comparator for quality",
-          "es": "Qvalue: Comparador de estructuras para calidad estructural"
-        }
+        "tooltip": { "en": "Structure quality comparator", "es": "Comparador de calidad estructural" }
       },
       {
         "id": "awsemtools",
-        "group": "Analysis",
+        "group": "AWSEM",
         "type": "analysis",
         "external": true,
         "link": "#",
         "linkType": "default",
-        "x": 500,
+        "x": 200,
         "y": 300,
         "connects": [],
         "label": { "en": "AWSEMTools", "es": "AWSEMTools" },
-        "tooltip": {
-          "en": "AWSEMTools: utilities for AWSEM simulations",
-          "es": "AWSEMTools: Conjunto de utilidades para simulaciones con AWSEM"
-        }
+        "tooltip": { "en": "Utilities for AWSEM simulations", "es": "Utilidades para AWSEM" }
       },
       {
         "id": "open3spn2",
@@ -144,14 +120,11 @@
         "external": false,
         "link": "#",
         "linkType": "default",
-        "x": 100,
-        "y": 400,
+        "x": 300,
+        "y": 200,
         "connects": [],
         "label": { "en": "Open3SPN2", "es": "Open3SPN2" },
-        "tooltip": {
-          "en": "Open3SPN2: DNA forcefield",
-          "es": "Open3SPN2: Campo de fuerza para simulaciones de ADN"
-        }
+        "tooltip": { "en": "DNA forcefield", "es": "Campo fuerza ADN" }
       },
       {
         "id": "openactin",
@@ -160,46 +133,37 @@
         "external": false,
         "link": "#",
         "linkType": "default",
-        "x": 300,
-        "y": 400,
+        "x": 400,
+        "y": 200,
         "connects": [],
         "label": { "en": "OpenActin", "es": "OpenActin" },
-        "tooltip": {
-          "en": "OpenActin: actin filament forcefield",
-          "es": "OpenActin: Campo de fuerza para filamentos de actina"
-        }
+        "tooltip": { "en": "Actin filament forcefield", "es": "Campo fuerza actina" }
       },
       {
         "id": "openfit",
-        "group": "Cryo-EM term",
+        "group": "Cryo‑EM term",
         "type": "forcefield",
         "external": false,
         "link": "#",
         "linkType": "dependency",
-        "x": 500,
-        "y": 400,
+        "x": 300,
+        "y": 300,
         "connects": ["openmicrom"],
         "label": { "en": "OpenFit", "es": "OpenFit" },
-        "tooltip": {
-          "en": "OpenFit: cryo‑EM fitting term",
-          "es": "OpenFit: Término para ajustar estructuras usando Cryo-EM"
-        }
+        "tooltip": { "en": "Cryo‑EM fitting term", "es": "Término ajuste Cryo‑EM" }
       },
       {
         "id": "opensmog",
-        "group": "Structure-based model",
+        "group": "Structure‑based model",
         "type": "forcefield",
         "external": false,
         "link": "#",
         "linkType": "default",
-        "x": 200,
-        "y": 500,
+        "x": 300,
+        "y": 400,
         "connects": [],
         "label": { "en": "OpenSMOG", "es": "OpenSMOG" },
-        "tooltip": {
-          "en": "OpenSMOG: SBM forcefield for proteins",
-          "es": "OpenSMOG: Campo de fuerza SBM para proteínas"
-        }
+        "tooltip": { "en": "SBM forcefield for proteins", "es": "Campo fuerza SBM" }
       },
       {
         "id": "openmicrom",
@@ -209,32 +173,10 @@
         "link": "#",
         "linkType": "default",
         "x": 400,
-        "y": 500,
+        "y": 400,
         "connects": [],
         "label": { "en": "OpenMicrom", "es": "OpenMicrom" },
-        "tooltip": {
-          "en": "OpenMicrom: chromosome simulation forcefield",
-          "es": "OpenMicrom: Campo de fuerza para simulación de cromosomas"
-        }
-      },
-      {
-        "id": "protdesign",
-        "group": "Analysis",
-        "type": "analysis",
-        "external": true,
-        "link": "#",
-        "linkType": "default",
-        "x": 700,
-        "y": 200,
-        "connects": [],
-        "label": {
-          "en": "Protein Design / DCA / ESM",
-          "es": "Protein Design / DCA / ESM"
-        },
-        "tooltip": {
-          "en": "Contact prediction via DCA or neural nets (ESM)",
-          "es": "Predicción de contacto por coevolución usando DCA o redes neuronales como ESM"
-        }
+        "tooltip": { "en": "Chromosome simulation forcefield", "es": "Campo fuerza cromosomas" }
       },
       {
         "id": "camkii",
@@ -243,14 +185,11 @@
         "external": true,
         "link": "#",
         "linkType": "default",
-        "x": 700,
-        "y": 400,
+        "x": 400,
+        "y": 300,
         "connects": [],
         "label": { "en": "CaMKII / MEDYAN", "es": "CaMKII / MEDYAN" },
-        "tooltip": {
-          "en": "Actin network simulation with CaMKII using MEDYAN",
-          "es": "Simulación de redes de actina con CaMKII usando MEDYAN"
-        }
+        "tooltip": { "en": "Actin network simulation", "es": "Simulación redes actina" }
       }
     ]
   }
