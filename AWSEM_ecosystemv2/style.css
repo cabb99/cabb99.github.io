@@ -54,14 +54,15 @@ body {
     z-index: 1;
   }
   .node:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
   }
   
   .node.forcefield { background: #fff3c4; color: #111; }
   .node.analysis    { background: #c0eec0; color: #111; }
   .node.training    { background: #d6d4f7; color: #111; }
   .node.utility     { background: #b2dcf2; color: #111; }
+  .node.server    { background: #fec2cf; color: #111; }
   .node.external    { border: 2px dashed #888; }
   
   #connections {

@@ -57,13 +57,37 @@
         "y": 200,
         "connects": ["frustrometer"],
         "label": { "en": "AWSEM‑MD", "es": "AWSEM‑MD" },
-        "tooltip": { "en": "AWSEM‑MD with MD simulations", "es": "AWSEM‑MD con simulaciones MD" }
+        "tooltip": { "en": "AWSEM protein forcefield implemented in LAMMPS", "es": "Implementacion en LAMMPS del campo de fuerza AWSEM" }
+      },
+      {
+        "id": "awsem-suite",
+        "group": "AWSEM",
+        "type": "server",
+        "external": false,
+        "link": "#",
+        "linkType": "default",
+        "x": 0,
+        "y": 300,
+        "label": { "en": "AWSEM‑Suite", "es": "AWSEM‑Suite" },
+        "tooltip": { "en": "AWSEM‑Suite server for structure predictions", "es": "Servidor de AWSEM-Suite para prediccion estructural" }
+      },
+      {
+        "id": "frustratometer-server",
+        "group": "AWSEM",
+        "type": "server",
+        "external": true,
+        "link": "#",
+        "linkType": "default",
+        "x": 100,
+        "y": 300,
+        "label": { "en": "Frustratometer server", "es": "Frustratometro (servidor)" },
+        "tooltip": { "en": "Server for protein frustration calculation", "es": "Servidor para calculos de frustracion en proteinas" }
       },
       {
         "id": "frustrometer",
         "group": "AWSEM",
         "type": "analysis",
-        "external": true,
+        "external": false,
         "link": "#",
         "linkType": "default",
         "x": 100,
@@ -93,7 +117,7 @@
         "link": "#",
         "linkType": "default",
         "x": 100,
-        "y": 300,
+        "y": 400,
         "connects": ["opensmog"],
         "label": { "en": "Qvalue", "es": "Qvalue" },
         "tooltip": { "en": "Structure quality comparator", "es": "Comparador de calidad estructural" }
@@ -102,7 +126,7 @@
         "id": "awsemtools",
         "group": "AWSEM",
         "type": "analysis",
-        "external": true,
+        "external": false,
         "link": "#",
         "linkType": "default",
         "x": 200,
@@ -154,7 +178,7 @@
         "id": "opensmog",
         "group": "Structure‑based model",
         "type": "forcefield",
-        "external": false,
+        "external": true,
         "link": "#",
         "linkType": "default",
         "x": 300,
@@ -167,7 +191,7 @@
         "id": "openmicrom",
         "group": "Chromosome forcefield",
         "type": "forcefield",
-        "external": false,
+        "external": true,
         "link": "#",
         "linkType": "default",
         "x": 400,
@@ -191,11 +215,14 @@
       }
     ],
     "connections": [
-        { "from": "awesome",      "to": "frustrometer", "type": "sequential" },
-        { "from": "awesome",      "to": "openawsem",    "type": "sequential" },
+        { "from": "awesome",      "to": "frustrometer",          "type": "sequential" },
+        { "from": "awesome",      "to": "openawsem",             "type": "sequential" },
 
-        { "from": "awsemmd",      "to": "frustrometer", "type": "sequential" },
-        { "from": "awsemmd",      "to": "qvalue",       "type": "sequential" },
+        { "from": "awsemmd",      "to": "frustrometer",          "type": "sequential" },
+        { "from": "awsemmd",      "to": "qvalue",                "type": "sequential" },
+        { "from": "awsemmd",      "to": "awsem-suite",           "type": "dependency" },
+        { "from": "awsemmd",      "to": "frustratometer-server", "type": "dependency" },
+        
 
         { "from": "openawsem",    "to": "qvalue",       "type": "sequential" },
         { "from": "openawsem",    "to": "awsemtools",   "type": "sequential" },
@@ -217,9 +244,9 @@
         { "from": "openfit",      "to": "opensmog",     "type": "integrable" }
     ],
       "connectionTypes": {
-        "sequential": { "color":"#00ffff", "dash":[5,5],    "label":{ "en":"Sequential","es":"Secuencial" } },
-        "integrable": { "color":"orange",  "dash":[5,5],    "label":{ "en":"Integrable","es":"Integrable" } },
-        "dependency": { "color":"green",   "dash":[5,5],    "label":{ "en":"Dependency","es":"Dependencia" } }
+        "sequential": { "color":"#00bbff", "dash":[], "head": "end", "label":{ "en":"Sequential","es":"Secuencial" } },
+        "integrable": { "color":"orange",  "dash":[], "head": "both",   "label":{ "en":"Integrable","es":"Integrable" } },
+        "dependency": { "color":"#00cc22",   "dash":[5,5], "head": "end",   "label":{ "en":"Dependency","es":"Dependencia" } }
       }
   }
   

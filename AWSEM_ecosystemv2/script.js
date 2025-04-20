@@ -57,8 +57,8 @@ function createNodes(root) {
       el.dataset.group = n.group;          // <— remember the group
       if (n.connects?.length) el.dataset.connect = n.connects.join(',');
       if (n.linkType)    el.dataset.link    = n.linkType;
-      el.style.left = 2 * n.x + 'px';
-      el.style.top  = 2 * n.y + 'px';
+      el.style.left = 50 + 2 * n.x + 'px';
+      el.style.top  = -120 + 2 * n.y + 'px';
 
       el.textContent = n.label[locale] || n.id;
       el.title       = n.tooltip[locale] || '';
@@ -103,7 +103,7 @@ function drawAll() {
       if (!from || !to) return;
   
       const cfg = types[conn.type] || { color:'cyan', dash:[] };
-      drawArrow(from, to, {color:cfg.color, dash:cfg.dash});
+      drawArrow(from, to, {color:cfg.color, dash:cfg.dash, head:cfg.head});
     });
   }
 //   
@@ -212,8 +212,8 @@ function drawArrow(a, b, {
     }
   
     // Draw arrowheads based on 'head' option
-    const angleEnd = Math.atan2(endY - cp2y, endX - cp2x);
-    const angleStart = Math.atan2(startY - cp1y, startX - cp1x);
+    const angleStart = Math.atan2(cp1y - startY, cp1x - startX);
+    const angleEnd   = Math.atan2(endY - cp2y, endX - cp2x);
   
     if (head === 'end' || head === 'both') {
       drawArrowhead(endX, endY, angleEnd, arrowhead);
