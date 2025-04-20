@@ -191,6 +191,34 @@
         "label": { "en": "CaMKII / MEDYAN", "es": "CaMKII / MEDYAN" },
         "tooltip": { "en": "Actin network simulation", "es": "Simulación redes actina" }
       }
-    ]
+    ],
+    "connections": [
+        { "from": "awesome",  "to": "openawsem",   "type": "sequential" },
+        { "from": "awesome",  "to": "frustrometer","type": "sequential" },
+        { "from": "awesome",  "to": "molscene",    "type": "sequential" },
+    
+        { "from": "openawsem","to": "awsemtools",  "type": "integrable" },
+        { "from": "openawsem","to": "qvalue",      "type": "integrable" },
+        { "from": "openawsem","to": "open3spn2",   "type": "integrable" },
+        { "from": "openawsem","to": "openfit",     "type": "integrable" },
+        { "from": "openawsem","to": "openactin",   "type": "integrable" },
+    
+        { "from": "openawsem","to": "opensmog",    "type": "sequential" },
+        { "from": "qvalue",   "to": "opensmog",    "type": "sequential" },
+    
+        { "from": "molscene", "to": "open3spn2",   "type": "sequential" },
+        { "from": "molscene", "to": "openactin",   "type": "sequential" },
+        { "from": "molscene", "to": "openfit",     "type": "sequential" },
+    
+        { "from": "openfit",  "to": "openmicrom",  "type": "integrable" },
+        { "from": "openfit",  "to": "open3spn2",   "type": "integrable" },
+        { "from": "openfit",  "to": "openawsem",   "type": "integrable" },
+        { "from": "openfit",  "to": "opensmog",   "type": "integrable" }
+      ],
+      "connectionTypes": {
+        "sequential": { "color":"#00ffff", "dash":[5,5],    "label":{ "en":"Sequential","es":"Secuencial" } },
+        "integrable": { "color":"orange",  "dash":[5,5],    "label":{ "en":"Integrable","es":"Integrable" } },
+        "dependency": { "color":"red",     "dash":[5,5], "label":{ "en":"Dependency","es":"Dependencia" } }
+      }
   }
   
