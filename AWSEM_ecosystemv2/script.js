@@ -150,7 +150,7 @@ function drawArrow(a, b, {
     const dx = endX - startX;
     const dy = endY - startY;
     const dist = Math.hypot(dx, dy);
-    const curveStrength = Math.min(80, dist / 3);
+    const curveStrength = Math.min(80, dist / 12);
     const norm = Math.hypot(dx, dy);
     const [px, py] = [-dy / norm, dx / norm];
   
@@ -233,7 +233,7 @@ function updateGroupBox(group) {
     );
     if (!nodes.length) return;
   
-    const pad = 20;
+    const pad = 25;
     let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   
     nodes.forEach(n => {
@@ -255,7 +255,6 @@ function updateGroupBox(group) {
   }
   
 
-// ————— DRAGGING —————
 // ————— DRAGGING —————
 function makeDraggable(el) {
     let dragging=false, sx=0, sy=0, ox=0, oy=0;

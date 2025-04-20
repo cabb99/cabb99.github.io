@@ -1,7 +1,6 @@
 {
     "groups": [
       "AWSEM",
-      "Analysis",
       "Utilities",
       "DNA forcefield",
       "Actin simulations",
@@ -12,7 +11,6 @@
     ],
     "groupLabels": {
       "AWSEM":                 { "en": "AWSEM protein forcefield",  "es": "Campo fuerza AWSEM" },
-      "Analysis":              { "en": "Analysis",                   "es": "Análisis" },
       "Utilities":             { "en": "Utilities",                  "es": "Utilidades" },
       "DNA forcefield":        { "en": "DNA forcefield",             "es": "Campo fuerza ADN" },
       "Actin simulations":     { "en": "Actin simulations",          "es": "Simulaciones de actina" },
@@ -58,12 +56,12 @@
         "x": 0,
         "y": 200,
         "connects": ["frustrometer"],
-        "label": { "en": "AWSEM‑MD (Server)", "es": "AWSEM‑MD (Servidor)" },
+        "label": { "en": "AWSEM‑MD", "es": "AWSEM‑MD" },
         "tooltip": { "en": "AWSEM‑MD with MD simulations", "es": "AWSEM‑MD con simulaciones MD" }
       },
       {
         "id": "frustrometer",
-        "group": "Analysis",
+        "group": "AWSEM",
         "type": "analysis",
         "external": true,
         "link": "#",
@@ -179,8 +177,8 @@
         "tooltip": { "en": "Chromosome simulation forcefield", "es": "Campo fuerza cromosomas" }
       },
       {
-        "id": "camkii",
-        "group": "Other groups",
+        "id": "MEDYAN-Camkii",
+        "group": "Actin simulations",
         "type": "forcefield",
         "external": true,
         "link": "#",
@@ -193,32 +191,35 @@
       }
     ],
     "connections": [
-        { "from": "awesome",  "to": "openawsem",   "type": "sequential" },
-        { "from": "awesome",  "to": "frustrometer","type": "sequential" },
-        { "from": "awesome",  "to": "molscene",    "type": "sequential" },
-    
-        { "from": "openawsem","to": "awsemtools",  "type": "integrable" },
-        { "from": "openawsem","to": "qvalue",      "type": "integrable" },
-        { "from": "openawsem","to": "open3spn2",   "type": "integrable" },
-        { "from": "openawsem","to": "openfit",     "type": "integrable" },
-        { "from": "openawsem","to": "openactin",   "type": "integrable" },
-    
-        { "from": "openawsem","to": "opensmog",    "type": "sequential" },
-        { "from": "qvalue",   "to": "opensmog",    "type": "sequential" },
-    
-        { "from": "molscene", "to": "open3spn2",   "type": "sequential" },
-        { "from": "molscene", "to": "openactin",   "type": "sequential" },
-        { "from": "molscene", "to": "openfit",     "type": "sequential" },
-    
-        { "from": "openfit",  "to": "openmicrom",  "type": "integrable" },
-        { "from": "openfit",  "to": "open3spn2",   "type": "integrable" },
-        { "from": "openfit",  "to": "openawsem",   "type": "integrable" },
-        { "from": "openfit",  "to": "opensmog",   "type": "integrable" }
-      ],
+        { "from": "awesome",      "to": "frustrometer", "type": "sequential" },
+        { "from": "awesome",      "to": "openawsem",    "type": "sequential" },
+
+        { "from": "awsemmd",      "to": "frustrometer", "type": "sequential" },
+        { "from": "awsemmd",      "to": "qvalue",       "type": "sequential" },
+
+        { "from": "openawsem",    "to": "qvalue",       "type": "sequential" },
+        { "from": "openawsem",    "to": "awsemtools",   "type": "sequential" },
+        { "from": "openawsem",    "to": "open3spn2",    "type": "integrable" },
+        { "from": "openawsem",    "to": "frustrometer", "type": "sequential" },
+
+        { "from": "opensmog",     "to": "qvalue",       "type": "sequential" },
+
+        { "from": "molscene",     "to": "open3spn2",    "type": "dependency" },
+        { "from": "molscene",     "to": "openfit",      "type": "dependency" },
+        { "from": "molscene",     "to": "openactin",    "type": "dependency" },
+        { "from": "molscene",     "to": "awesome",      "type": "dependency" },
+        { "from": "molscene",     "to": "openawsem",      "type": "dependency" },
+
+        { "from": "openfit",      "to": "openawsem",    "type": "integrable" },
+        { "from": "openfit",      "to": "open3spn2",    "type": "integrable" },
+        { "from": "openfit",      "to": "openactin",   "type": "integrable" },
+        { "from": "openfit",      "to": "openmicrom",   "type": "integrable" },
+        { "from": "openfit",      "to": "opensmog",     "type": "integrable" }
+    ],
       "connectionTypes": {
         "sequential": { "color":"#00ffff", "dash":[5,5],    "label":{ "en":"Sequential","es":"Secuencial" } },
         "integrable": { "color":"orange",  "dash":[5,5],    "label":{ "en":"Integrable","es":"Integrable" } },
-        "dependency": { "color":"red",     "dash":[5,5], "label":{ "en":"Dependency","es":"Dependencia" } }
+        "dependency": { "color":"green",   "dash":[5,5],    "label":{ "en":"Dependency","es":"Dependencia" } }
       }
   }
   
