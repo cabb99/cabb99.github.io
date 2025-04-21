@@ -13,6 +13,9 @@ langSwitcher.addEventListener('change', e => {
   rebuild();
 });
 
+const legend = document.querySelector('.legend');
+makeDraggable(legend);
+
 fetch('config.json')
   .then(r => r.json())
   .then(json => {
