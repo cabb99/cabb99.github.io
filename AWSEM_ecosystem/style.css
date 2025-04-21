@@ -1,46 +1,75 @@
 :root {
-    --bg: #f5f5f5;
-    --fg: #222;
-    --group-border: #ccc;
-    --arrow-sequential: #00bbff;
-    --arrow-integrable: orange;
-    --arrow-dependency: #00cc22;
-    --forcefield: #fff3c4;
-    --analysis: #c0eec0;
-    --training: #d6d4f7;
-    --utility: #b2dcf2;
-    --server: #fec2cf;
-    --legend-bg: rgba(230, 230, 230, 0.9);
-    --legend-border: #444;
-    --legend-shadow: rgba(0, 0, 0, 0.5);
-    --header-bg: #fff;
-    --group-box-border: #aaa;
-    --group-box-label-bg: #ccc;
-    --group-box-label-color: #111;
-    --node-hover-shadow: rgba(0, 255, 255, 0.7);
+    /* General UI */
+    --bg: #f9fafc;
+    --fg: #212529;
+
+    /* Group boxes */
+    --group-border: #bcc2c9;
+    --group-box-border: #a9b2bb;
+    --group-box-label-bg: #dee2e6;
+    --group-box-label-color: #495057;
+
+    /* Arrows (colorblind-friendly palette) */
+    --arrow-sequential: #1f77b4; /* Vivid blue */
+    --arrow-integrable: #ff7f0e; /* Strong orange */
+    --arrow-dependency: #2ca02c; /* Clear green */
+
+    /* Node colors (muted pastels for good readability) */
+    --forcefield: #ffecb5; /* Light gold */
+    --analysis: #c4f0c5;   /* Pale green */
+    --training: #d0cbf1;   /* Soft lavender */
+    --utility: #addcf7;    /* Soft sky blue */
+    --server: #f7c3d0;     /* Gentle rose */
+
+    /* Legend styling */
+    --legend-bg: rgba(255, 255, 255, 0.95);
+    --legend-border: #adb5bd;
+    --legend-shadow: rgba(33, 37, 41, 0.15);
+
+    /* Header */
+    --header-bg: #ffffff;
+    --header-fg: #212529;
+
+    /* Interaction effects */
+    --node-hover-shadow: rgba(31, 119, 180, 0.5);
 }
 
 [data-theme="dark"] {
-    --bg: #0e1117;
-    --fg: #fff;
-    --group-border: #888;
-    --arrow-sequential: #00bbff;
-    --arrow-integrable: orange;
-    --arrow-dependency: #00cc22;
-    --forcefield: #fff3c4;
-    --analysis: #c0eec0;
-    --training: #d6d4f7;
-    --utility: #b2dcf2;
-    --server: #fec2cf;
-    --legend-bg: rgba(20, 20, 20, 0.9);
-    --legend-border: #666;
-    --legend-shadow: rgba(0, 0, 0, 0.7);
-    --header-bg: #222;
-    --group-box-border: #666;
-    --group-box-label-bg: #222;
-    --group-box-label-color: #aaa;
-    --node-hover-shadow: rgba(0, 255, 255, 0.9);
+    /* General UI */
+    --bg: #1a202c;
+    --fg: #edf2f7;
+
+    /* Group boxes */
+    --group-border: #4a5568;
+    --group-box-border: #718096;
+    --group-box-label-bg: #2d3748;
+    --group-box-label-color: #cbd5e0;
+
+    /* Arrows (same colorblind-friendly palette) */
+    --arrow-sequential: #6cb9ff; /* Light blue */
+    --arrow-integrable: #ffa94d; /* Bright orange */
+    --arrow-dependency: #6ddc6d; /* Bright green */
+
+    /* Node colors (brighter pastels to pop on dark background) */
+    --forcefield: #ffe69c; /* Warm yellow */
+    --analysis: #8ee68f;   /* Vibrant pastel green */
+    --training: #aaa2f4;   /* Vivid lavender */
+    --utility: #78cbf0;    /* Clear blue */
+    --server: #f290a6;     /* Rose pink */
+
+    /* Legend styling */
+    --legend-bg: rgba(45, 55, 72, 0.95);
+    --legend-border: #4a5568;
+    --legend-shadow: rgba(0, 0, 0, 0.5);
+
+    /* Header */
+    --header-bg: #2d3748;
+    --header-fg: #edf2f7;
+
+    /* Interaction effects */
+    --node-hover-shadow: rgba(108, 185, 255, 0.6);
 }
+
 
 body {
     margin: 0;
