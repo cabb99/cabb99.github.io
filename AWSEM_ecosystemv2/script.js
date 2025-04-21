@@ -63,7 +63,15 @@ function createNodes(root) {
       el.textContent = n.label[locale] || n.id;
       el.title       = n.tooltip[locale] || '';
 
-      el.addEventListener('click', () => {
+      el.addEventListener('click', e => {
+        // if we just dragged, swallow this click
+        if (el._didDrag) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          el._didDrag = false;
+          return;
+        }
+        // otherwise it was a real click
         window.location.href = n.link;
       });
   
@@ -257,33 +265,46 @@ function updateGroupBox(group) {
 
 // ————— DRAGGING —————
 function makeDraggable(el) {
-    let dragging=false, sx=0, sy=0, ox=0, oy=0;
-    
+    let dragging = false;
+    let startX, startY, origX, origY;
+  
+    // we’ll flip this to true as soon as we move
+    el._didDrag = false;
+  
     el.addEventListener('mousedown', e => {
-      dragging=true;
-      sx=e.clientX; sy=e.clientY;
-      ox=el.offsetLeft; oy=el.offsetTop;
-      el.style.cursor='grabbing';
+      dragging = true;
+      el._didDrag = false;            // reset on each new press
+      startX = e.clientX;
+      startY = e.clientY;
+      origX  = el.offsetLeft;
+      origY  = el.offsetTop;
+      el.style.cursor = 'grabbing';
       e.preventDefault();
     });
   
     window.addEventListener('mousemove', e => {
       if (!dragging) return;
   
-      const dx = e.clientX - sx, dy = e.clientY - sy;
-      el.style.left = (ox + dx) + 'px';
-      el.style.top  = (oy + dy) + 'px';
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
   
+      // if we’ve actually moved more than a handful of pixels, mark it
+      if (!el._didDrag && (Math.abs(dx) + Math.abs(dy) > 3)) {
+        el._didDrag = true;
+      }
+  
+      el.style.left = origX + dx + 'px';
+      el.style.top  = origY + dy + 'px';
       drawAll();
   
-      // CORRECT FIX:
+      // update its group box as you already do
       const grpName = el.dataset.group;
       const grp = document.querySelector(`.group-box[data-group="${grpName}"]`);
       if (grp) updateGroupBox(grp);
     });
   
     window.addEventListener('mouseup', () => {
-      dragging=false;
-      el.style.cursor='grab';
+      dragging = false;
+      el.style.cursor = 'grab';
     });
   }
