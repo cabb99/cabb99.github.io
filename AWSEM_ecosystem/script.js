@@ -139,13 +139,13 @@ function drawAll() {
       if (!from || !to) return;
   
       const cfg = types[conn.type] || { color:'cyan', dash:[] };
-      drawArrow(from, to, {color:cfg.color, dash:cfg.dash, head:cfg.head});
+      drawArrow(from, to, {className:cfg.class, dash:cfg.dash, head:cfg.head});
     });
   }
 //   
   
 function drawArrow(a, b, {
-    color = 'cyan',
+    className = 'arrow',
     dash = [],
     start = 'boundary',  // 'center' or 'boundary'
     end = 'boundary',    // 'center' or 'boundary'
@@ -195,10 +195,18 @@ function drawArrow(a, b, {
     const cp2x = startX + 2 * dx / 3 - px * curveStrength;
     const cp2y = startY + 2 * dy / 3 - py * curveStrength;
   
+    // Create a temporary DOM element to extract computed style
+    const dummy = document.createElement('div');
+    dummy.className = `arrow-color ${className}`;
+    document.body.appendChild(dummy);
+    const color = getComputedStyle(dummy).getPropertyValue('color') || 'cyan';
+    dummy.remove();
+
     // Draw curve
     ctx.beginPath();
     ctx.setLineDash(dash);
     ctx.strokeStyle = color;
+    ctx.fillStyle = color;
     ctx.lineWidth = 2;
     ctx.moveTo(startX, startY);
     ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, endX, endY);

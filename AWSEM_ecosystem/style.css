@@ -2,13 +2,46 @@
     --bg: #f5f5f5;
     --fg: #222;
     --group-border: #ccc;
-  }
-  [data-theme="dark"] {
+    --arrow-sequential: #00bbff;
+    --arrow-integrable: orange;
+    --arrow-dependency: #00cc22;
+    --forcefield: #fff3c4;
+    --analysis: #c0eec0;
+    --training: #d6d4f7;
+    --utility: #b2dcf2;
+    --server: #fec2cf;
+    --legend-bg: rgba(230, 230, 230, 0.9);
+    --legend-border: #444;
+    --legend-shadow: rgba(0, 0, 0, 0.5);
+    --header-bg: #fff;
+    --group-box-border: #aaa;
+    --group-box-label-bg: #ccc;
+    --group-box-label-color: #111;
+    --node-hover-shadow: rgba(0, 255, 255, 0.7);
+}
+
+[data-theme="dark"] {
     --bg: #0e1117;
     --fg: #fff;
     --group-border: #888;
-  }
-  
+    --arrow-sequential: #00bbff;
+    --arrow-integrable: orange;
+    --arrow-dependency: #00cc22;
+    --forcefield: #fff3c4;
+    --analysis: #c0eec0;
+    --training: #d6d4f7;
+    --utility: #b2dcf2;
+    --server: #fec2cf;
+    --legend-bg: rgba(20, 20, 20, 0.9);
+    --legend-border: #666;
+    --legend-shadow: rgba(0, 0, 0, 0.7);
+    --header-bg: #222;
+    --group-box-border: #666;
+    --group-box-label-bg: #222;
+    --group-box-label-color: #aaa;
+    --node-hover-shadow: rgba(0, 255, 255, 0.9);
+}
+
 body {
     margin: 0;
     background: var(--bg);
@@ -16,44 +49,48 @@ body {
     font-family: 'Segoe UI', sans-serif;
     overflow: auto;
     padding: 1rem;
-  }
-  header {
+}
+
+header {
     position: sticky;
     top: 0;
-    background: #111;
+    background: var(--header-bg);
+    color: var(--fg);
     padding: 0.5rem 1rem;
     z-index: 10;
-  }
-  #languageSwitcher { margin-left: 0.5rem; }
-  
-  .flowchart {
+}
+
+#languageSwitcher { margin-left: 0.5rem; }
+
+.flowchart {
     position: relative;
     width: 100%;
     height: calc(100vh - 4rem);
     overflow: hidden;
-  }
-  
-  .group-box {
+}
+
+.group-box {
     position: absolute;
-    border: 1px dashed #aaa;
+    border: 1px dashed var(--group-box-border);
     border-radius: 8px;
     /* padding: 1rem; */
     z-index: 0;
     box-sizing: border-box;
-  }
-  .group-box::before {
+}
+
+.group-box::before {
     content: attr(data-label);
     position: absolute;
     top: -0.8rem;
     left: 1rem;
-    background: #111;
+    background: var(--group-box-label-bg);
     /* padding: 0 0.5rem; */
     font-size: 0.85rem;
-    color: #ccc;
+    color: var(--group-box-label-color);
     pointer-events: none;
-  }
-  
-  .node {
+}
+
+.node {
     position: absolute;
     padding: 0.8rem 1.2rem;
     border-radius: 1rem;
@@ -63,86 +100,123 @@ body {
     user-select: none;
     transition: transform 0.2s, box-shadow 0.2s;
     z-index: 1;
-  }
-  .node:hover {
-    transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 0 50px rgba(0, 255, 255, 0.7);
-  }
-  
-  .node.forcefield { background: #fff3c4; color: #111; }
-  .node.analysis    { background: #c0eec0; color: #111; }
-  .node.training    { background: #d6d4f7; color: #111; }
-  .node.utility     { background: #b2dcf2; color: #111; }
-  .node.server    { background: #fec2cf; color: #111; }
-  .node.external    { border: 2px dashed #888; }
+}
 
-  .legend-forcefield { background: #fff3c4; color: #111; }
-  .legend-analysis    { background: #c0eec0; color: #111; }
-  .legend-training    { background: #d6d4f7; color: #111; }
-  .legend-utility     { background: #b2dcf2; color: #111; }
-  .legend-server    { background: #fec2cf; color: #111; }
-  .legend-internal    { border: 2px solid #888; }
-  .legend-external    { border: 2px dashed #888; }
-  
-  #connections {
+.node:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 0 50px var(--node-hover-shadow);
+}
+
+.node.forcefield { background: var(--forcefield); color: #111; }
+.node.analysis    { background: var(--analysis); color: #111; }
+.node.training    { background: var(--training); color: #111; }
+.node.utility     { background: var(--utility); color: #111; }
+.node.server      { background: var(--server); color: #111; }
+.node.external    { border: 2px dashed var(--group-border); }
+
+.legend-forcefield { background: var(--forcefield); color: #111; }
+.legend-analysis    { background: var(--analysis); color: #111; }
+.legend-training    { background: var(--training); color: #111; }
+.legend-utility     { background: var(--utility); color: #111; }
+.legend-server      { background: var(--server); color: #111; }
+.legend-internal    { border: 2px solid var(--group-border); }
+.legend-external    { border: 2px dashed var(--group-border); }
+
+#connections {
     position: absolute;
     top: 0; left: 0;
     z-index: 0;
     pointer-events: none;
-  }
-  
-  .legend {
+}
+
+.legend {
     position: fixed;
     top: 1rem;
     right: 1rem; 
     width: 280px;
-    background: rgba(30,30,30,0.9);
-    border: 1px solid #444;
+    background: var(--legend-bg, rgba(30,30,30,0.9));
+    border: 1px solid var(--legend-border, #444);
     border-radius: 8px;
     padding: 1rem;
     font-size: 0.9rem;
     max-width: 300px;
     z-index: 20;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  }
-  
-  .legend ul {
+    box-shadow: 0 0 10px var(--legend-shadow, rgba(0,0,0,0.5));
+}
+
+.legend ul {
     list-style: none;
     padding-left: 0;
-  }
-  .legend li {
+}
+
+.legend li {
     margin: 0.2rem 0;
-  }
-  .legend span {
+}
+
+.legend span {
     vertical-align: middle;
-  }
-  
-  .legend-columns {
+}
+
+.legend-columns {
     display: flex;
     gap: 1rem; /* spacing between columns */
-  }
-  
-  .legend-left,
-  .legend-right {
+}
+
+.legend-left,
+.legend-right {
     flex: 1; /* take equal space */
     margin-bottom: 0.5rem;
-  }
-  
-  .legend li {
+}
+
+.legend li {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-  }
-  
-  .legend span[class^="legend-"] {
+}
+
+.legend span[class^="legend-"] {
     display: inline-block;
     padding: 0.3rem 0.6rem;
     border-radius: 0.5rem;
     font-size: 0.85rem;
-  }
+}
 
-  .legend strong {
+.legend strong {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 1rem;
-  }
+}
+
+.arrow path {
+    fill: none;
+    stroke-width: 2;
+}
+
+.arrow polygon {
+    stroke: none;
+}
+
+.arrow.sequential path,
+.arrow.sequential polygon {
+    stroke: var(--arrow-sequential);
+    fill: var(--arrow-sequential);
+}
+
+.arrow.integrable path,
+.arrow.integrable polygon {
+    stroke: var(--arrow-integrable);
+    fill: var(--arrow-integrable);
+}
+
+.arrow.dependency path {
+    stroke: var(--arrow-dependency);
+    stroke-dasharray: 5,5;
+}
+
+.arrow.dependency polygon {
+    fill: var(--arrow-dependency);
+}
+
+.arrow-color.sequential  { color: var(--arrow-sequential); }
+.arrow-color.integrable  { color: var(--arrow-integrable); }
+.arrow-color.dependency  { color: var(--arrow-dependency); }

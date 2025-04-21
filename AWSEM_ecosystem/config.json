@@ -241,9 +241,9 @@
         { "from": "openfit",      "to": "opensmog",     "type": "integrable" }
     ],
       "connectionTypes": {
-        "sequential": { "color":"#00bbff", "dash":[], "head": "end", "label":{ "en":"Sequential","es":"Secuencial" } },
-        "integrable": { "color":"orange",  "dash":[], "head": "both",   "label":{ "en":"Integrable","es":"Integrable" } },
-        "dependency": { "color":"#00cc22",   "dash":[5,5], "head": "end",   "label":{ "en":"Dependency","es":"Dependencia" } }
+        "sequential": { "class":"sequential", "dash":[], "head": "end", "label":{ "en":"Sequential","es":"Secuencial" } },
+        "integrable": { "class":"integrable",  "dash":[], "head": "both",   "label":{ "en":"Integrable","es":"Integrable" } },
+        "dependency": { "class":"dependency",   "dash":[5,5], "head": "end",   "label":{ "en":"Dependency","es":"Dependencia" } }
       }
   }
   
