@@ -22,14 +22,28 @@ fetch('config.json')
   .catch(console.error);
 
 // ————— Rebuild everything —————
-function rebuild() {
-  const container = document.getElementById('flowchart');
-  container.innerHTML = '';
-  createGroups(container);
-  createNodes(container);
-  setupCanvas();
-  drawAll();
-}
+function rebuild(reset = false) {
+    const container = document.getElementById('flowchart');
+  
+    // —— Save current node positions, if any
+    const positionMap = {};
+    
+    if (!reset) {
+        document.querySelectorAll('.node').forEach(node => {
+        const id = node.dataset.id;
+        positionMap[id] = {
+            left: node.style.left,
+            top: node.style.top
+      };
+      });
+    }
+  
+    container.innerHTML = '';
+    createGroups(container);
+    createNodes(container, positionMap);  // 👈 pass the saved positions in
+    setupCanvas();
+    drawAll();
+  }
 
 // ————— Create group‑boxes —————
 function createGroups(root) {
@@ -43,45 +57,46 @@ function createGroups(root) {
 }
 
 // ————— Create nodes inside their groups —————
-function createNodes(root) {
-    config.nodes.forEach(n => {
-      // find the BOX for labeling only, but DON'T append into it:
-      const box = root.querySelector(`.group-box[data-group="${n.group}"]`);
-      if (!box) return console.warn(`Node “${n.id}” refers to missing group “${n.group}”`);
-  
-      const el = document.createElement('div');
-      el.classList.add('node', n.type);
-      if (n.external) el.classList.add('external');
-  
-      el.dataset.id    = n.id;
-      el.dataset.group = n.group;          // <— remember the group
-      if (n.connects?.length) el.dataset.connect = n.connects.join(',');
-      if (n.linkType)    el.dataset.link    = n.linkType;
+function createNodes(root, savedPositions = {}) {
+  config.nodes.forEach(n => {
+    const el = document.createElement('div');
+    el.classList.add('node', n.type);
+    if (n.external) el.classList.add('external');
+
+    el.dataset.id    = n.id;
+    el.dataset.group = n.group;
+    if (n.connects?.length) el.dataset.connect = n.connects.join(',');
+    if (n.linkType)    el.dataset.link = n.linkType;
+
+    // 🧠 Use saved position if it exists, otherwise use config default
+    const pos = savedPositions[n.id];
+    if (pos) {
+      el.style.left = pos.left;
+      el.style.top  = pos.top;
+    } else {
       el.style.left = 50 + 2 * n.x + 'px';
       el.style.top  = -120 + 2 * n.y + 'px';
+    }
 
-      el.textContent = n.label[locale] || n.id;
-      el.title       = n.tooltip[locale] || '';
+    el.textContent = n.label[locale] || n.id;
+    el.title       = n.tooltip[locale] || '';
 
-      el.addEventListener('click', e => {
-        // if we just dragged, swallow this click
-        if (el._didDrag) {
-          e.stopImmediatePropagation();
-          e.preventDefault();
-          el._didDrag = false;
-          return;
-        }
-        // otherwise it was a real click
-        window.location.href = n.link;
-      });
-  
-      root.appendChild(el);                // <— always append into flowchart, not into box
-      makeDraggable(el);
+    el.addEventListener('click', e => {
+      if (el._didDrag) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        el._didDrag = false;
+        return;
+      }
+      window.location.href = n.link;
     });
-  
-    document.querySelectorAll('.group-box').forEach(updateGroupBox);
-  }
-  
+
+    root.appendChild(el);
+    makeDraggable(el);
+  });
+
+  document.querySelectorAll('.group-box').forEach(updateGroupBox);
+}
 
 // ————— Canvas setup & drawing —————
 const canvas = document.getElementById('connections');

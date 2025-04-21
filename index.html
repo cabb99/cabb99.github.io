@@ -1,1 +1,103 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos Bueno</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <a href="#" class="logo">Carlos Bueno</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section id="home" class="hero">
+        <h1>Carlos Bueno</h1>
+        <p></p>
+    </section>
+    <section id="about" class="about">
+        <h2>About</h2>
+        <p>Carlos Bueno is a Computational Biology Developer and Scientist with expertise in theoretical biophysics, bioinformatics, and software development. He has a strong background in Python, Git, Linux, and various data analysis packages, such as NumPy, Pandas, and Scikit-learn. Carlos has a proven track record in research, with multiple publications and presentations at international conferences. He is also fluent in English, Spanish, and French.</p>
+    </section>
+    <section id="resume" class="resume">
+        <h2>Resume</h2>
+        <a href="Carlos_Bueno_Resume.pdf" target="_blank" class="resume-link">Download Resume</a>
+        <div class="resume-content">
+            <h3>Education</h3>
+            <!-- Add your education here -->
+            
+            <h3>Skills</h3>
+            <!-- Add your skills here -->
+            
+            <h3>Experience</h3>
+            <!-- Add your experience here -->
+            
+            <h3>Relevant Projects</h3>
+            <!-- Add your relevant projects here -->
+            
+            <h3>Activities and Honors</h3>
+            <!-- Add your activities and honors here -->
+            
+            <h3>Teaching and Mentoring Experience</h3>
+            <!-- Add your teaching and mentoring experience here -->
+        </div>
+    </section>
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <iframe 
+        src="AWSEM_ecosystem/index.html"
+        class="embedded-project"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+      
+
+        <div class="project-card">
+            <h3><a href="AWSEM_ecosystem/index.html" target="_blank">AWSEM Ecosystem</a></h3>
+          </div>
+        <div class="project-card">
+            <h3>Project 2</h3>
+            <p>Description of project 2.</p>
+        </div>
+    </section>
+    <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <div class="skill-card">
+            <h3>Python</h3>
+            <p>Expert</p>
+        </div>
+        <div class="skill-card">
+            <h3>R</h3>
+            <p>Intermediate</p>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <form class="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2023 CompBioDev. All rights reserved.</p>
+</footer>
+</body>
+</html>
