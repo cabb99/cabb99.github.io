@@ -56,6 +56,7 @@ function rebuild(reset = false) {
     createNodes(container, positionMap);  // 👈 pass the saved positions in
     setupCanvas();
     drawAll();
+    forceSimulateNodes();
   }
 
 // ————— Create group‑boxes —————
@@ -303,13 +304,12 @@ function updateGroupBox(group) {
 function makeDraggable(el) {
     let dragging = false;
     let startX, startY, origX, origY;
-  
-    // we’ll flip this to true as soon as we move
+
     el._didDrag = false;
-  
+
     el.addEventListener('mousedown', e => {
       dragging = true;
-      el._didDrag = false;            // reset on each new press
+      el._didDrag = false;
       startX = e.clientX;
       startY = e.clientY;
       origX  = el.offsetLeft;
@@ -317,30 +317,156 @@ function makeDraggable(el) {
       el.style.cursor = 'grabbing';
       e.preventDefault();
     });
-  
+
     window.addEventListener('mousemove', e => {
       if (!dragging) return;
-  
+
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
-  
-      // if we’ve actually moved more than a handful of pixels, mark it
+
       if (!el._didDrag && (Math.abs(dx) + Math.abs(dy) > 3)) {
         el._didDrag = true;
       }
-  
+
       el.style.left = origX + dx + 'px';
       el.style.top  = origY + dy + 'px';
       drawAll();
-  
-      // update its group box as you already do
+
       const grpName = el.dataset.group;
       const grp = document.querySelector(`.group-box[data-group="${grpName}"]`);
       if (grp) updateGroupBox(grp);
     });
-  
+
     window.addEventListener('mouseup', () => {
       dragging = false;
       el.style.cursor = 'grab';
+      forceSimulateNodes(); // Use force-directed simulation after drag
     });
+}
+
+// ————— FORCE‑DIRECTED BOX COLLISION + SPATIAL HASH —————
+function forceSimulateNodes() {
+  const nodeEls = Array.from(document.querySelectorAll('.node'));
+  if (nodeEls.length < 2) return;
+
+  // ── Params ───────────────────────────────────────────
+  const padding    = 20;    // extra gap from edges
+  const dt         = 0.2;   // fixed time step
+  const damping    = 0.8;   // velocity decay
+  const maxSteps   = 40;   // max frames
+  const maxVel     = 10;    // clamp speed
+  const cellSize   = 150;   // grid size ≥ max(w,h)+padding
+
+  // ── Build sim state ──────────────────────────────────
+  let simNodes = nodeEls.map(el => {
+    const w   = el.offsetWidth;
+    const h   = el.offsetHeight;
+    const x0  = parseFloat(el.style.left) || 0;
+    const y0  = parseFloat(el.style.top)  || 0;
+    return {
+      el,
+      w, h,
+      halfW: w/2 + padding,
+      halfH: h/2 + padding,
+      // store center coords
+      x: x0 + w/2,
+      y: y0 + h/2,
+      vx: 0,
+      vy: 0
+    };
+  });
+
+  let step = 0;
+  const bound = (v, lo, hi) => (v < lo ? lo : v > hi ? hi : v);
+
+  let continue_anim = true;
+  function stop_animation() {
+    continue_anim = false;
   }
+  
+  nodeEls.forEach(el => {
+    el.addEventListener('click', stop_animation);
+  });
+
+
+  function tick() {
+    // 1) build spatial hash
+    const buckets = new Map();
+    simNodes.forEach((n,i) => {
+      const key = `${Math.floor(n.x/cellSize)},${Math.floor(n.y/cellSize)}`;
+      (buckets.get(key) || buckets.set(key, []).get(key)).push(i);
+    });
+
+    // 2) box‐overlap repulsion: only when AABBs overlap
+    simNodes.forEach((a,i) => {
+      const cellX = Math.floor(a.x/cellSize),
+            cellY = Math.floor(a.y/cellSize);
+
+      // check self + neighbors
+      for (let dx = -1; dx <= 1; dx++) {
+        for (let dy = -1; dy <= 1; dy++) {
+          const list = buckets.get(`${cellX+dx},${cellY+dy}`);
+          if (!list) continue;
+          for (let j of list) {
+            if (j <= i) continue;
+            const b = simNodes[j];
+            let dxC = b.x - a.x,
+                dyC = b.y - a.y;
+            const overlapX = a.halfW + b.halfW - Math.abs(dxC);
+            const overlapY = a.halfH + b.halfH - Math.abs(dyC);
+
+            if (overlapX > 0 && overlapY > 0) {
+              // push on smaller‐overlap axis
+              if (overlapX < overlapY) {
+                const sign = dxC < 0 ? -1 : 1;
+                const f = overlapX * 0.5; // spring K=0.5
+                a.vx -= f * sign * dt;
+                b.vx += f * sign * dt;
+              } else {
+                const sign = dyC < 0 ? -1 : 1;
+                const f = overlapY * 0.5;
+                a.vy -= f * sign * dt;
+                b.vy += f * sign * dt;
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // 3) integrate + damping + clamp + bounds
+    simNodes.forEach(n => {
+      n.vx *= damping;
+      n.vy *= damping;
+
+      const speed = Math.hypot(n.vx, n.vy);
+      if (speed > maxVel) {
+        n.vx = n.vx / speed * maxVel;
+        n.vy = n.vy / speed * maxVel;
+      }
+
+      n.x += n.vx * dt;
+      n.y += n.vy * dt;
+
+      // keep center inside padded viewport
+      const halfW = n.w/2, halfH = n.h/2;
+      n.x = bound(n.x, padding + halfW, window.innerWidth  - padding - halfW);
+      n.y = bound(n.y, padding + halfH, window.innerHeight - padding - halfH);
+
+      // write back top/left
+      n.el.style.left = (n.x - halfW) + 'px';
+      n.el.style.top  = (n.y - halfH) + 'px';
+    });
+
+    // 4) redraw dependent UI
+    document.querySelectorAll('.group-box').forEach(updateGroupBox);
+    drawAll();
+
+    // next frame?
+    if (continue_anim && (++step < maxSteps)) requestAnimationFrame(tick);
+  }
+
+  tick();
+}
+
+  

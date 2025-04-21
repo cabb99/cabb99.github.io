@@ -22,7 +22,7 @@
     --server: #f7c3d0;     /* Gentle rose */
 
     /* Legend styling */
-    --legend-bg: rgba(255, 255, 255, 0.95);
+    --legend-bg: rgba(255, 255, 255, 0.75);
     --legend-border: #adb5bd;
     --legend-shadow: rgba(33, 37, 41, 0.15);
 
@@ -40,7 +40,7 @@
     --fg: #edf2f7;
 
     /* Group boxes */
-    --group-border: #4a5568;
+    --group-border: #000000;
     --group-box-border: #718096;
     --group-box-label-bg: #2d3748;
     --group-box-label-color: #cbd5e0;
@@ -58,7 +58,7 @@
     --server: #f290a6;     /* Rose pink */
 
     /* Legend styling */
-    --legend-bg: rgba(45, 55, 72, 0.95);
+    --legend-bg: rgba(45, 55, 72, 0.75);
     --legend-border: #4a5568;
     --legend-shadow: rgba(0, 0, 0, 0.5);
 
