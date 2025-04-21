@@ -70,6 +70,7 @@ body {
   .legend-training    { background: #d6d4f7; color: #111; }
   .legend-utility     { background: #b2dcf2; color: #111; }
   .legend-server    { background: #fec2cf; color: #111; }
+  .legend-internal    { border: 2px solid #888; }
   .legend-external    { border: 2px dashed #888; }
   
   #connections {
@@ -80,9 +81,19 @@ body {
   }
   
   .legend {
-    margin-top: 1rem;
-    color: #ccc;
+    position: absolute;
+    top: 1rem;
+    left: 52rem;
+    background: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 0.9rem;
+    max-width: 300px;
+    z-index: 20;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
   }
+  
   .legend ul {
     list-style: none;
     padding-left: 0;
@@ -94,3 +105,32 @@ body {
     vertical-align: middle;
   }
   
+  .legend-columns {
+    display: flex;
+    gap: 1rem; /* spacing between columns */
+  }
+  
+  .legend-left,
+  .legend-right {
+    flex: 1; /* take equal space */
+    margin-bottom: 0.5rem;
+  }
+  
+  .legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .legend span[class^="legend-"] {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .legend strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
