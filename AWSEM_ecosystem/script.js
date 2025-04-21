@@ -16,6 +16,16 @@ langSwitcher.addEventListener('change', e => {
 const legend = document.querySelector('.legend');
 makeDraggable(legend);
 
+const toggle = document.getElementById('theme-toggle');
+
+toggle.addEventListener('click', ()=>{
+  const next = document.documentElement.getAttribute('data-theme') === 'dark'? 'light':'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+
+document.documentElement.setAttribute('data-theme', localStorage.getItem('theme')||'dark');
+
 fetch('config.json')
   .then(r => r.json())
   .then(json => {

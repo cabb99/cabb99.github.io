@@ -1,7 +1,18 @@
+:root {
+    --bg: #f5f5f5;
+    --fg: #222;
+    --group-border: #ccc;
+  }
+  [data-theme="dark"] {
+    --bg: #0e1117;
+    --fg: #fff;
+    --group-border: #888;
+  }
+  
 body {
     margin: 0;
-    background: #0e1117;
-    color: #fff;
+    background: var(--bg);
+    color: var(--fg);
     font-family: 'Segoe UI', sans-serif;
     overflow: auto;
     padding: 1rem;
@@ -81,10 +92,11 @@ body {
   }
   
   .legend {
-    position: absolute;
+    position: fixed;
     top: 1rem;
-    left: 52rem;
-    background: #1e1e1e;
+    right: 1rem; 
+    width: 280px;
+    background: rgba(30,30,30,0.9);
     border: 1px solid #444;
     border-radius: 8px;
     padding: 1rem;
