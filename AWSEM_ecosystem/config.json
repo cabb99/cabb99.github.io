@@ -6,8 +6,7 @@
       "Actin simulations",
       "Cryo‑EM term",
       "Structure‑based model",
-      "Chromosome forcefield",
-      "Other groups"
+      "Chromosome forcefield"
     ],
     "groupLabels": {
       "AWSEM":                 { "en": "AWSEM protein forcefield",  "es": "Campo fuerza AWSEM" },
@@ -16,9 +15,7 @@
       "Actin simulations":     { "en": "Actin simulations",          "es": "Simulaciones de actina" },
       "Cryo‑EM term":          { "en": "Cryo‑EM term",               "es": "Término Cryo‑EM" },
       "Structure‑based model": { "en": "SBM protein forcefield",     "es": "Campo fuerza SBM" },
-      "Chromosome forcefield": { "en": "Chromosome forcefield",      "es": "Campo fuerza cromosomas" },
-      "Other groups":          { "en": "Other groups",               "es": "Otros grupos" }
-    },
+      "Chromosome forcefield": { "en": "Chromosome forcefield",      "es": "Campo fuerza cromosomas" }    },
     "nodes": [
       {
         "id": "awesome",
