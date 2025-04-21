@@ -64,6 +64,13 @@ body {
   .node.utility     { background: #b2dcf2; color: #111; }
   .node.server    { background: #fec2cf; color: #111; }
   .node.external    { border: 2px dashed #888; }
+
+  .legend-forcefield { background: #fff3c4; color: #111; }
+  .legend-analysis    { background: #c0eec0; color: #111; }
+  .legend-training    { background: #d6d4f7; color: #111; }
+  .legend-utility     { background: #b2dcf2; color: #111; }
+  .legend-server    { background: #fec2cf; color: #111; }
+  .legend-external    { border: 2px dashed #888; }
   
   #connections {
     position: absolute;
