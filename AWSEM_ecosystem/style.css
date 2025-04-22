@@ -95,7 +95,6 @@ header {
     position: relative;
     width: 100%;
     height: calc(100vh - 4rem);
-    overflow: hidden;
 }
 
 .group-box {
@@ -249,3 +248,28 @@ header {
 .arrow-color.sequential  { color: var(--arrow-sequential); }
 .arrow-color.integrable  { color: var(--arrow-integrable); }
 .arrow-color.dependency  { color: var(--arrow-dependency); }
+
+@media (max-width: 768px) {
+    .node {
+      font-size: 0.75rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.8rem;
+    }
+  
+    .group-box::before {
+      font-size: 0.7rem;
+    }
+  
+    .legend {
+      width: auto;
+      max-width: 90vw;
+      font-size: 0.8rem;
+      right: 0.5rem;
+      top: 0.5rem;
+    }
+  
+    .legend span[class^="legend-"] {
+      padding: 0.2rem 0.4rem;
+      font-size: 0.7rem;
+    }
+  }

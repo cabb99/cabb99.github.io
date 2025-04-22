@@ -56,7 +56,7 @@ function rebuild(reset = false) {
     createNodes(container, positionMap);  // 👈 pass the saved positions in
     setupCanvas();
     drawAll();
-    forceSimulateNodes();
+    forceSimulateNodes(); // Ensure nodes are repositioned responsively
   }
 
 // ————— Create group‑boxes —————
@@ -72,6 +72,19 @@ function createGroups(root) {
 
 // ————— Create nodes inside their groups —————
 function createNodes(root, savedPositions = {}) {
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+  const padding = 50; // Padding for top and left
+  const extraPadding = 220; // Extra padding for right and bottom
+
+  const maxX = Math.max(...config.nodes.map(n => n.x));
+  const minX = Math.min(...config.nodes.map(n => n.x));
+  const maxY = Math.max(...config.nodes.map(n => n.y));
+  const minY = Math.min(...config.nodes.map(n => n.y));
+
+  const scaleX = (windowWidth - padding - extraPadding) / (maxX - minX || 1);
+  const scaleY = (windowHeight - padding - extraPadding) / (maxY - minY || 1);
+
   config.nodes.forEach(n => {
     const el = document.createElement('div');
     el.classList.add('node', n.type);
@@ -88,8 +101,8 @@ function createNodes(root, savedPositions = {}) {
       el.style.left = pos.left;
       el.style.top  = pos.top;
     } else {
-      el.style.left = 50 + 2 * n.x + 'px';
-      el.style.top  = -120 + 2 * n.y + 'px';
+      el.style.left = padding + (n.x - minX) * scaleX + 'px';
+      el.style.top  = padding + (n.y - minY) * scaleY + 'px';
     }
 
     el.textContent = n.label[locale] || n.id;
@@ -118,10 +131,23 @@ const ctx    = canvas.getContext('2d');
 
 function setupCanvas() {
   function resize() {
-    canvas.width  = document.documentElement.clientWidth;
+    canvas.width = document.documentElement.clientWidth;
     canvas.height = document.documentElement.clientHeight;
+
+    // Adjust node positions proportionally to the new canvas size
+    const nodes = document.querySelectorAll('.node');
+    nodes.forEach(node => {
+      const left = parseFloat(node.style.left) || 0;
+      const top = parseFloat(node.style.top) || 0;
+
+      // Scale positions based on the new canvas dimensions
+      node.style.left = (left / canvas.width) * document.documentElement.clientWidth + 'px';
+      node.style.top = (top / canvas.height) * document.documentElement.clientHeight + 'px';
+    });
+
     drawAll();
   }
+
   window.addEventListener('resize', resize);
   window.addEventListener('scroll', drawAll);
   resize();
@@ -345,6 +371,41 @@ function makeDraggable(el) {
       el.style.cursor = 'grab';
       forceSimulateNodes(); // Use force-directed simulation after drag
     });
+
+    el.addEventListener('touchstart', e => {
+        dragging = true;
+        el._didDrag = false;
+        const touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+        origX  = el.offsetLeft;
+        origY  = el.offsetTop;
+        e.preventDefault();
+      }, { passive: false });
+      
+    window.addEventListener('touchmove', e => {
+        if (!dragging) return;
+        const touch = e.touches[0];
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+      
+        if (!el._didDrag && (Math.abs(dx) + Math.abs(dy) > 3)) {
+          el._didDrag = true;
+        }
+      
+        el.style.left = origX + dx + 'px';
+        el.style.top  = origY + dy + 'px';
+        drawAll();
+      
+        const grpName = el.dataset.group;
+        const grp = document.querySelector(`.group-box[data-group="${grpName}"]`);
+        if (grp) updateGroupBox(grp);
+      }, { passive: false });
+      
+      window.addEventListener('touchend', () => {
+        dragging = false;
+        forceSimulateNodes();
+      }, { passive: false });
 }
 
 // ————— FORCE‑DIRECTED BOX COLLISION + SPATIAL HASH —————
@@ -472,4 +533,3 @@ function forceSimulateNodes() {
   tick();
 }
 
-  
