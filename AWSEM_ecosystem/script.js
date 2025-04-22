@@ -118,8 +118,8 @@ const ctx    = canvas.getContext('2d');
 
 function setupCanvas() {
   function resize() {
-    canvas.width  = document.documentElement.scrollWidth;
-    canvas.height = document.documentElement.scrollHeight;
+    canvas.width  = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.clientHeight;
     drawAll();
   }
   window.addEventListener('resize', resize);
@@ -295,8 +295,11 @@ function updateGroupBox(group) {
   
     group.style.left   = (minX - pad) + 'px';
     group.style.top    = (minY - pad) + 'px';
-    group.style.width  = (maxX - minX + 2*pad) + 'px';
-    group.style.height = (maxY - minY + 2*pad) + 'px';
+    group.style.left   = Math.max(0, minX - pad) + 'px';
+    group.style.top    = Math.max(0, minY - pad) + 'px';
+    group.style.width  = Math.min(window.innerWidth  - parseFloat(group.style.left), maxX - minX + 2*pad) + 'px';
+    group.style.height = Math.min(window.innerHeight - parseFloat(group.style.top),  maxY - minY + 2*pad) + 'px';
+    
   }
   
 

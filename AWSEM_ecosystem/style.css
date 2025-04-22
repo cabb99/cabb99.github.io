@@ -77,7 +77,7 @@ body {
     color: var(--fg);
     font-family: 'Segoe UI', sans-serif;
     overflow: auto;
-    padding: 1rem;
+    
 }
 
 header {
