@@ -25,7 +25,7 @@
     function computeContactShapes(structure) {
       const caAtoms = [];
       structure.eachAtom(ap => {
-        if (ap.chainname === "A" && ap.atomname === "CA") {
+        if ((ap.resname === "GLY" && ap.atomname === "CA") || (ap.resname !== "GLY" && ap.atomname === "CB")) {
           caAtoms.push({
             pos: ap.positionToVector3(),   // clone of the 3D vector
             resname: ap.resname            // plain string
@@ -42,10 +42,12 @@
             const p1 = POLAR.has(a1.resname);
             const p2 = POLAR.has(a2.resname);
             if (p1 || p2) {
-              shapes.push({
+                const sameType = (p1 && p2) || (!p1 && !p2);
+                const color = sameType ? [0, 1, 0] : [1, 0, 0];
+                shapes.push({
                 p1: a1.pos,
                 p2: a2.pos,
-                color: (p1 && p2) ? [0,1,0] : [1,0,0],
+                color: color,
                 dashed: dist > SOLID_DASH_CUTOFF
               });
             }
@@ -75,9 +77,11 @@
 
     stage.loadFile("rcsb://1mbn").then(component => {
       component.addRepresentation("cartoon", { color: "blue" });
+      component.addRepresentation("licorice", { color: "resname", sele: ".CA or .CB" });
+      component.addRepresentation("ball+stick", { color: "resname", sele: "HEM" });
       stage.autoView();
       const shapes = computeContactShapes(component.structure);
-      renderContactShapes(stage, shapes, 0.05);
+      renderContactShapes(stage, shapes, 0.025);
     });
   </script>
 </body>
