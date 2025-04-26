@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Myoglobin Cα Contacts</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #121212;
+      color: #eee;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      margin: 1rem 0;
+      font-size: 1.25rem;
+    }
+    #viewport {
+      width: 100%;
+      height: 85vh;
+    }
+  </style>
+</head>
+<body>
+  <h1>Myoglobin Cα Contacts (4.5–9.5 Å)</h1>
+  <div id="viewport"></div>
+
+  <script src="https://unpkg.com/ngl@latest/dist/ngl.js"></script>
+  <script>
+    //–– Create the NGL Stage ––
+    const stage = new NGL.Stage("viewport", { backgroundColor: "#121212" });
+    window.addEventListener("resize", () => stage.handleResize(), false);
+
+    //–– Define polar residues ––
+    const POLAR = new Set([
+      "SER","THR","ASN","GLN","ARG","LYS","ASP","GLU","HIS"
+    ]);
+
+    // var pos1 = [ 17.549999237060547, 8.53600025177002, -0.5149999856948853 ]
+
+    // var pos2 = [
+    // [ 19.740999221801758, 6.551000118255615, -0.546999990940094 ],
+    // [ 19.969999313354492, 5.958000183105469, -1.8380000591278076 ],
+    // [ 18.88599967956543, 6.414999961853027, -2.821000099182129 ],
+    // [ 14.675999641418457, 8.154000282287598, -3.7300000190734863 ],
+    // [ 13.555000305175781, 6.9029998779296875, -0.13099999725818634 ]
+    // ]
+
+    // var shape = new NGL.Shape("shape", { dashedCylinder: false, radialSegments: 100 })
+    // for (var i = 0; i < pos2.length; i++) {
+    //     shape.addCylinder(pos1, pos2[i], [ 1, 1, 0.4 ], 0.05, "My test " + i)
+    // }
+    // var shapeComp = stage.addComponentFromObject(shape)
+    // shapeComp.addRepresentation("buffer")
+
+    // var shape = new NGL.Shape("shape", { dashedCylinder: true, radialSegments: 100 })
+    // for (var i = 0; i < pos2.length; i++) {
+    //     shape.addCylinder(pos1, pos2[i], [ 1, 1, 0.4 ], 0.1, "My test " + i)
+    // }
+    // var shapeComp = stage.addComponentFromObject(shape)
+    // shapeComp.addRepresentation("buffer")
+
+    //–– Load the structure ––
+    stage.loadFile("rcsb://1mbn").then(component => {
+      const { structure } = component;
+
+      // 1) Cartoon backbone
+      component.addRepresentation("cartoon", { color: "blue" });
+
+
+      component.addRepresentation( "cartoon" );
+      // either give selections (uses first selected atom) ...
+      var atomPair = [ [ "1.CA", "4.CA" ], [ "7.CA", "13.CA" ] ];
+      // or atom indices
+      var atomPair = [ [ 8, 28 ], [ 173, 121 ] ];
+      component.addRepresentation( "distance", { atomPair: atomPair, useCylinder:false ,labelVisible:false, linewidth:5, colorValue: "#87ceeb", colorReverse:"#87ceeb"  } );
+      component.addRepresentation( "distance", { atomPair: atomPair, useCylinder:false ,labelVisible:false, linewidth:5, colorValue: "#87ceeb", colorReverse:"#87ceeb"  } );
+    //   component.addRepresentation("contact", {backboneHydrogenBond: true});
+
+
+
+    
+    //3 ) After load, find the true CA atoms by iterating over every AtomProxy
+    let p1 = null, p2 = null;
+    structure.eachAtom(ap => {
+        if (ap.chainname === "A" && ap.resno === 8  && ap.atomname === "CA") {
+        p1 = ap.positionToVector3();
+        }
+        if (ap.chainname === "A" && ap.resno === 28 && ap.atomname === "CA") {
+        p2 = ap.positionToVector3();
+        }
+    });
+
+    console.log("p1:", p1, "p2:", p2);
+    if (!p1 || !p2) {
+        console.error("Could not find CA positions!");
+        return;
+    }
+
+    console.log("p1:", p1, "p2:", p2);
+        if (!p1 || !p2) {
+          console.error("Could not find CA positions!");
+          return;
+        }
+
+
+    var shape3 = new NGL.Shape("shape", { dashedCylinder: false, radialSegments: 100 })
+    shape3.addCylinder(p1, p2, [ 1, 1, 0.4 ], 0.1, "My test cylinder")
+    var shapeComp3 = stage.addComponentFromObject(shape3)
+    shapeComp3.addRepresentation("buffer")
+    stage.autoView();
+    }, 500);
+
+
+    //   // 2) Distance representation over Cα atoms
+    //   component.addRepresentation("distance", {
+    //     atomPair:         "[ [ 8, 28 ], [ 173, 121 ] ]",
+
+    //     // // Color‐callback: green for polar‐polar, red for polar‐nonpolar
+    //     // color: ({ atomIndex1, atomIndex2 }) => {
+    //     //   const a1 = structure.getAtomProxy(atomIndex1);
+    //     //   const a2 = structure.getAtomProxy(atomIndex2);
+    //     //   const p1 = POLAR.has(a1.resname);
+    //     //   const p2 = POLAR.has(a2.resname);
+    //     //   if (p1 && p2) return "green";
+    //     //   if (p1 || p2) return "red";
+    //     //   return "gray";  // or skip by returning transparent
+    //     // },
+
+    //     // // Dashed callback: solid if ≤ 6.5 Å, dotted if > 6.5 Å
+    //     // dash: ({ distance }) => distance > 6.5
+    //   });
+
+    //   component.autoView();
+    // });
+  </script>
+</body>
+</html>
