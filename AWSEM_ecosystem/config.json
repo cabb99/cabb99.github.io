@@ -23,25 +23,21 @@
         "type": "training",
         "external": false,
         "link": "https://github.com/cabb99/awsemml",
-        "linkType": "default",
         "x": 100,
         "y": 100,
-        "connects": ["openawsem","frustrometer","molscene"],
         "label": { "en": "AWESOME", "es": "AWESOME" },
-        "tooltip": { "en": "AWESOME: training AWSEM parameters", "es": "AWESOME: Entrenamiento de parámetros" }
+        "tooltip": { "en": "AWESOME: Methods for optimization of the AWSEM potential", "es": "AWESOME: Metodos para optimizacion de parametros de AWSEM" }
       },
       {
         "id": "molscene",
         "group": "Utilities",
         "type": "utility",
         "external": false,
-        "link": "#",
-        "linkType": "default",
+        "link": "https://github.com/cabb99/molscene",
         "x": 300,
         "y": 100,
-        "connects": ["awesome","openawsem","open3spn2","openfit"],
         "label": { "en": "MolScene", "es": "MolScene" },
-        "tooltip": { "en": "MolScene: molecular scene visualization", "es": "MolScene: Visualización molecular" }
+        "tooltip": { "en": "MolScene: Parsing of molecular files", "es": "MolScene: Lectura de archivos moleculares" }
       },
       {
         "id": "awsemmd",
@@ -52,7 +48,6 @@
         "linkType": "default",
         "x": 0,
         "y": 200,
-        "connects": ["frustrometer"],
         "label": { "en": "AWSEM‑MD", "es": "AWSEM‑MD" },
         "tooltip": { "en": "AWSEM protein forcefield implemented in LAMMPS", "es": "Implementacion en LAMMPS del campo de fuerza AWSEM" }
       },
@@ -89,7 +84,6 @@
         "linkType": "default",
         "x": 100,
         "y": 200,
-        "connects": ["qvalue"],
         "label": { "en": "Frustratometer", "es": "Frustratometer" },
         "tooltip": { "en": "Structural frustration measurement", "es": "Medición de frustración estructural" }
       },
@@ -102,7 +96,6 @@
         "linkType": "integrable",
         "x": 200,
         "y": 200,
-        "connects": ["awsemtools","qvalue","open3spn2","openfit","openactin"],
         "label": { "en": "OpenAWSEM", "es": "OpenAWSEM" },
         "tooltip": { "en": "Open forcefield for proteins", "es": "Campo libre para proteínas" }
       },
@@ -115,7 +108,6 @@
         "linkType": "default",
         "x": 100,
         "y": 400,
-        "connects": ["opensmog"],
         "label": { "en": "Qvalue", "es": "Qvalue" },
         "tooltip": { "en": "Structure quality comparator", "es": "Comparador de calidad estructural" }
       },
@@ -128,7 +120,6 @@
         "linkType": "default",
         "x": 200,
         "y": 300,
-        "connects": [],
         "label": { "en": "AWSEMTools", "es": "AWSEMTools" },
         "tooltip": { "en": "Utilities for AWSEM simulations", "es": "Utilidades para AWSEM" }
       },
@@ -141,7 +132,6 @@
         "linkType": "default",
         "x": 300,
         "y": 200,
-        "connects": [],
         "label": { "en": "Open3SPN2", "es": "Open3SPN2" },
         "tooltip": { "en": "DNA forcefield", "es": "Campo fuerza ADN" }
       },
@@ -154,7 +144,6 @@
         "linkType": "default",
         "x": 400,
         "y": 200,
-        "connects": [],
         "label": { "en": "OpenActin", "es": "OpenActin" },
         "tooltip": { "en": "Actin filament forcefield", "es": "Campo fuerza actina" }
       },
@@ -167,7 +156,6 @@
         "linkType": "dependency",
         "x": 300,
         "y": 300,
-        "connects": ["openmicrom"],
         "label": { "en": "OpenFit", "es": "OpenFit" },
         "tooltip": { "en": "Cryo‑EM fitting term", "es": "Término ajuste Cryo‑EM" }
       },
@@ -180,7 +168,6 @@
         "linkType": "default",
         "x": 300,
         "y": 400,
-        "connects": [],
         "label": { "en": "OpenSMOG", "es": "OpenSMOG" },
         "tooltip": { "en": "SBM forcefield for proteins", "es": "Campo fuerza SBM" }
       },
@@ -193,7 +180,6 @@
         "linkType": "default",
         "x": 400,
         "y": 400,
-        "connects": [],
         "label": { "en": "OpenMicrom", "es": "OpenMicrom" },
         "tooltip": { "en": "Chromosome simulation forcefield", "es": "Campo fuerza cromosomas" }
       },
@@ -206,7 +192,6 @@
         "linkType": "default",
         "x": 400,
         "y": 300,
-        "connects": [],
         "label": { "en": "CaMKII / MEDYAN", "es": "CaMKII / MEDYAN" },
         "tooltip": { "en": "Actin network simulation", "es": "Simulación redes actina" }
       }

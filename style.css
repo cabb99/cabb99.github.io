@@ -1,3 +1,7 @@
+:root {
+    color-scheme: dark light;
+  }
+
 * {
     margin: 0;
     padding: 0;
@@ -152,12 +156,18 @@ footer {
 
 .embedded-project {
     width: 100%;
-    min-height: 1000px;
-    max-height: 120vh;
+    height: 100vh; /* Ensure it takes the full viewport height */
     border: none;
-    border-radius: 12px;
+    border-radius: 0px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    overflow: hidden;
+    overflow: hidden !important; /* Forcefully prevent scrolling */
     background: white;
-    scroll-behavior: smooth;
-  }
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+    display: block; /* Ensure proper rendering as a block element */
+    position: relative; /* Ensure proper layout */
+}
+
+.embedded-project::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in WebKit browsers */
+}
