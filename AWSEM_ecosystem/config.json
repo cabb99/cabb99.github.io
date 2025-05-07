@@ -104,7 +104,7 @@
         "group": "AWSEM",
         "type": "analysis",
         "external": false,
-        "link": "https://github.com/cabb99/Frustratometer",
+        "link": "https://github.com/cabb99/qvalue",
         "linkType": "default",
         "x": 100,
         "y": 400,
