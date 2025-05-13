@@ -115,7 +115,7 @@ function createNodes(root, savedPositions = {}) {
         el._didDrag = false;
         return;
       }
-      window.location.href = n.link;
+      window.open(n.link, '_blank');
     });
 
     root.appendChild(el);

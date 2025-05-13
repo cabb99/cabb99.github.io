@@ -1,115 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carlos Bueno</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carlos Bueno</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg" href="images/Logo_small.svg">
+  <script defer src="script.js"></script>
 </head>
 <body>
-<header>
+  <header>
     <nav class="navbar">
-        <a href="#" class="logo">Carlos Bueno</a>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="MoleculeViewer/index.html">Extra</a></li>
-        </ul>
-    </nav>
-</header>
-<main>
-    <section id="home" class="hero">
-        <h1>Carlos Bueno</h1>
-        <p>Hello</p>
-        <!-- <iframe 
-        src="MoleculeViewer/index.html"
-        class="embedded-project"
-        allowfullscreen
-        loading="lazy"
-      ></iframe> -->
-    </section>
-    
-    <section id="about" class="about">
-        <h2>About</h2>
-        <p>
-            I am a MolSSI Software Fellow and Postdoctoral Associate at the Rice Center for Theoretical Biological Physics who designs physics-based molecular models to reveal essential biological behaviors.
-            I lead the development of open-source force fields like OpenAWSEM for protein dynamics, Open3SPN2 for DNA dynamics and OpenActin for modeling mesoscale cytoskeletal networks, all built in OpenMM with version control, automated testing and comprehensive documentation.
-            I am currently working on machine-learning optimization of force field parameters with close collaboration alongside experimental labs to ensure that every model addresses real research questions.
-            I am passionate about mentoring the next generation of scientists through programs like Science Clubs Peru, iGEM and Frontiers in Science, and I have guided both undergraduates and graduate students in hands-on biophysical software projects.
-            I strive to deliver modular, maintainable and extensible computational frameworks that accelerate discovery, uphold reproducibility and advance an open-science community.
-        </p>
-    </section>
-    <section id="resume" class="resume">
-        <h2>Resume</h2>
-        <a href="Carlos_Bueno_Resume.pdf" target="_blank" class="resume-link">Download Resume</a>
-        <div class="resume-content">
-            <h3>Education</h3>
-            <!-- Add your education here -->
-            
-            <h3>Skills</h3>
-            <!-- Add your skills here -->
-            
-            <h3>Experience</h3>
-            <!-- Add your experience here -->
-            
-            <h3>Relevant Projects</h3>
-            <!-- Add your relevant projects here -->
-            
-            <h3>Activities and Honors</h3>
-            <!-- Add your activities and honors here -->
-            
-            <h3>Teaching and Mentoring Experience</h3>
-            <!-- Add your teaching and mentoring experience here -->
-        </div>
-    </section>
-    <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <iframe 
-        src="AWSEM_ecosystem/index.html"
-        class="embedded-project"
-        allowfullscreen
-        loading="lazy"
-      ></iframe>
-        <div class="project-card">
-            <h3><a href="AWSEM_ecosystem/index.html" target="_blank">AWSEM Ecosystem</a></h3>
+      <a href="#home" class="logo" style="color:#fff; font-size:1.2rem;">Carlos Bueno</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#mentoring">Mentoring</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="header-controls">
+        <div class="dropdown relative">
+          <button type="button" class="inline-flex items-center justify-center w-8 h-8 rounded-md border border-gray-300 shadow-sm bg-transparent hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-500" id="language-switch-footer" aria-haspopup="true" aria-expanded="true">
+            <span class="block">🇬🇧</span>
+          </button>
+          <div class="origin-top-right right-0 pt-2">
+            <div class="py-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="language-switch-footer">
+              <a class="flex items-center px-4 py-2 hover:bg-gray-100" rel="alternate" href="#" role="menuitem">
+                <span class="block has-darkgrey-color">🇬🇧 English</span>
+              </a>
+              <a class="flex items-center px-4 py-2 hover:bg-gray-100" rel="alternate" href="#" role="menuitem">
+                <span class="block has-darkgrey-color">🇪🇸 Español</span>
+              </a>
+            </div>
           </div>
-        <div class="project-card">
-            <h3>Project 2</h3>
-            <p>Description of project 2.</p>
         </div>
+        <button id="theme-toggle">🌓</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <h1 style="text-align:center;">Carlos Bueno</h1>
+      <p style="text-align:center; font-style:italic;">Scientific Software Developer and Computational Biophysicist</p>
     </section>
-    <section id="skills" class="skills">
-        <h2>Skills</h2>
-        <div class="skill-card">
-            <h3>Python</h3>
-            <p>Expert</p>
-        </div>
-        <div class="skill-card">
-            <h3>R</h3>
-            <p>Intermediate</p>
-        </div>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        <!-- Dynamic content -->
+      </p>
     </section>
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
-        <form class="contact-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <br>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <br>
-            <button type="submit">Submit</button>
-        </form>
+
+    <section id="education">
+      <h2>Education</h2>
+      <ul>
+        <!-- Dynamic content -->
+      </ul>
     </section>
-</main>
-<footer>
-    <p>&copy; 2023 CompBioDev. All rights reserved.</p>
-</footer>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <ul>
+        <li>Postdoctoral Associate, Rice CTBP, Houston, TX (Jan 2023 – Present)
+          <ul>
+            <li>Led development of five bioinformatics Python packages, including Frustratometer for protein frustration analysis.</li>
+            <li>Collaborated on NIH grant proposals and interdisciplinary modeling projects.</li>
+            <li>Authored 3 publications, presented at 2 conferences, mentored undergraduates and graduate students.</li>
+          </ul>
+        </li>
+        <li>Research Assistant, Rice CTBP, Houston, TX (Jan 2016 – Dec 2022)
+          <ul>
+            <li>Co-developed OpenAWSEM and Open3SPN2 Python packages for coarse-grained MD simulations.</li>
+            <li>Led C++ MEDYAN-CaMKII project for actin bundling with a 4-person team.</li>
+            <li>Ran HPC simulations with statistical and ML models; authored 10 publications.</li>
+          </ul>
+        </li>
+        <li>Research Assistant, Bioinformatics Unit, FARVET, Ica, Peru (Mar 2013 – Jan 2015)
+          <ul>
+            <li>Built Python tools for multi-epitope vaccine design and genomic data mining.</li>
+          </ul>
+        </li>
+        <li>Research Assistant, Cayetano Heredia University, Lima, Peru (Jan 2012 – May 2015)
+          <ul>
+            <li>Analyzed biomolecular simulations using custom Linux/Python workflows.</li>
+            <li>Authored 2 publications and successful grant applications.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <iframe src="AWSEM_ecosystem/index.html" style="width:100%; height:600px; border:none; overflow:hidden;"></iframe>
+      <ul>
+        <li><a href="https://github.com/cabb99/openawsem" target="_blank" style="text-decoration: none; color: var(--primary-color);">OpenAWSEM</a>: Protein folding coarse-grained force field.</li>
+        <li><a href="https://github.com/cabb99/open3spn2" target="_blank" style="text-decoration: none; color: var(--primary-color);">Open3SPN2</a>: DNA dynamics coarse-grained model.</li>
+        <li><a href="https://github.com/cabb99/OpenActin" target="_blank" style="text-decoration: none; color: var(--primary-color);">OpenActin</a>: Mesoscale actin network force field.</li>
+        <li><a href="https://github.com/cabb99/Frustratometer" target="_blank" style="text-decoration: none; color: var(--primary-color);">DCA-Frustratometer</a>: Energy model parameterization via direct coupling analysis.</li>
+        <li><a href="https://github.com/cabb99/OpenFit" target="_blank" style="text-decoration: none; color: var(--primary-color);">OpenFit</a>: Molecular density fitting for cryo-EM maps; Numba-accelerated.</li>
+      </ul>
+    </section>
+    <section id="publications">
+      <h2>Publications</h2>
+      <ul>
+        <li>2024
+          <ul>
+            <li>Galpern EA, Jaafari H, Bueno C, Wolynes PG, Ferreiro DU. Reassessing the exon–foldon correspondence using frustration analysis. PNAS 121 (28): e2400151121.</li>
+            <li>Jaafari H, Bueno C, Schafer NP, Martin J, Morcos F, Wolynes PG. The physical and evolutionary energy landscapes of devolved protein sequences corresponding to pseudogenes. PNAS 121 (21): e2322428121.</li>
+          </ul>
+        </li>
+        <li>2023
+          <ul>
+            <li>Chen X, Jin S, Chen M, Bueno C, Wolynes PG. The marionette mechanism of domain-domain communication in the estrogen receptor. PNAS 120:1–9.</li>
+          </ul>
+        </li>
+        <li>2022
+          <ul>
+            <li>Gu X, Schafer NP, Bueno C, Lu W, Wolynes PG. A structural dynamics model for CPEB3 regulation. PLoS Comp. Bio. 18:e1010657.</li>
+            <li>Jin S, Bueno C, Lu W, Wang Q, Chen M, Chen X, Wolynes PG, Gao Y. Mechanism of T7 gp4 helicase on ssDNA. PNAS 119:1–10.</li>
+            <li>Bueno C, Liman J, Schafer NP, Cheung MS, Wolynes PG. Flory-Stockmayer theories of cytoskeletal percolation. PLoS Comp. Bio. 18:e1010105.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="awards">
+      <h2>Awards & Honors</h2>
+      <ul>
+        <li>2024: MolSSI Software Fellow</li>
+      </ul>
+    </section>
+
+    <section id="mentoring">
+      <h2>Mentoring & Teaching</h2>
+      <ul>
+        <li>Frontiers in Science: Mentor, Rice University–University of Houston (2023, 2020)</li>
+        <li>Science Clubs Peru: Instructor: Build computational models for protein simulations (2021)</li>
+        <li>Serendipity Program: Mentor (2015–2019)</li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>Python, OpenMM, PyTorch</li>
+        <li>C++, Numba, MPI/SLURM</li>
+        <li>Git, CI/CD, Linux (advanced)</li>
+        <li>Coarse-grained modeling & force-field design</li>
+        <li>Machine learning optimization & statistical modeling</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <form class="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 – 2025 Carlos Bueno. All rights reserved.</p>
+  </footer>
 </body>
 </html>
