@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* Colors */
 :root {
     color-scheme: dark light;
     --primary-color: #1a73e8;
@@ -12,6 +13,60 @@
     --gradient: linear-gradient(135deg, #1a73e8, #004080);
 }
 
+/* Dark Theme */
+[data-theme="dark"] {
+  --primary-color: #1a73e8;
+  --secondary-color: #121212;
+  --text-color: #e8eaed;
+  --background-color: #202124;
+  --hover-background-color: #303134;
+  --border-color: #5f6368;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --gradient: linear-gradient(135deg, #1a73e8, #004080);
+}
+
+[data-theme="dark"] a {
+  color: var(--primary-color);
+}
+
+[data-theme="dark"] header {
+  background: var(--gradient);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .nav-links a {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .dropdown div {
+  background: var(--secondary-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+[data-theme="dark"] .dropdown div a {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .dropdown div a:hover {
+  background: var(--hover-background-color);
+}
+
+[data-theme="dark"] h2 {
+  border-bottom: 3px solid var(--primary-color);
+}
+
+[data-theme="dark"] details[open] summary {
+  color: var(--primary-color);
+}
+
+[data-theme="dark"] footer {
+  background: var(--gradient);
+  color: var(--text-color);
+}
+
+
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -28,6 +83,7 @@ body {
     padding: 0;
 }
 
+/* Header */
 header {
     background: var(--gradient);
     color: var(--secondary-color);
@@ -82,6 +138,7 @@ header {
     gap: 1rem;
 }
 
+/* Dropdown */
 .dropdown {
     position: relative;
 }
@@ -133,6 +190,7 @@ header {
     cursor: pointer;
 }
 
+/* Hero Section */
 .hero {
     display: flex;
     flex-direction: column;
@@ -153,6 +211,7 @@ header {
     color: var(--primary-color);
 }
 
+/* Main Content */
 main {
     padding: 2rem;
     max-width: 960px;
@@ -168,7 +227,7 @@ section {
     text-align: center;
 }
 
-projects h2, .skills h2, .contact h2 {
+.projects h2, .skills h2, .contact h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
 }
@@ -194,6 +253,7 @@ details[open] summary {
     color: var(--primary-color);
 }
 
+/* Footer */
 footer {
     background: var(--gradient);
     color: var(--secondary-color);
@@ -203,6 +263,7 @@ footer {
     box-shadow: 0 -4px 6px var(--shadow-color);
 }
 
+/* Cards */
 .project-card, .skill-card {
     background-color: var(--secondary-color);
     border-radius: 10px;
@@ -220,6 +281,7 @@ footer {
     box-shadow: 0 6px 12px var(--shadow-color);
 }
 
+/* Contact Form */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -259,6 +321,7 @@ footer {
     transform: scale(1.05);
 }
 
+/* About and Resume */
 .about, .resume {
     padding: 3rem 2rem;
     text-align: center;
@@ -302,24 +365,26 @@ footer {
     margin-bottom: 0.5rem;
 }
 
+/* Embedded Project */
 .embedded-project {
     width: 100%;
-    height: 100vh; /* Ensure it takes the full viewport height */
+    height: 100vh;
     border: none;
     border-radius: 0px;
     box-shadow: 0 4px 16px var(--shadow-color);
-    overflow: hidden !important; /* Forcefully prevent scrolling */
+    overflow: hidden !important;
     background: var(--secondary-color);
-    scrollbar-width: none; /* Hide scrollbar in Firefox */
-    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
-    display: block; /* Ensure proper rendering as a block element */
-    position: relative; /* Ensure proper layout */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    display: block;
+    position: relative;
 }
 
 .embedded-project::-webkit-scrollbar {
-    display: none; /* Hide scrollbar in WebKit browsers */
+    display: none;
 }
 
+/* Links */
 a {
     color: var(--primary-color);
     text-decoration: none;
@@ -330,6 +395,7 @@ a:hover {
     color: #002060;
 }
 
+/* Lists */
 ul {
     list-style: none;
     padding: 0;
@@ -342,7 +408,7 @@ ul li {
 }
 
 ul li::before {
-    content: ''; /* Remove the bullet point */
+    content: '';
 }
 
 /* Center align the main title */
@@ -356,59 +422,9 @@ ul li::before {
   font-style: italic;
 }
 
-/* Dark theme styles */
-[data-theme="dark"] {
-    --primary-color: #1a73e8;
-    --secondary-color: #121212;
-    --text-color: #e8eaed;
-    --background-color: #202124;
-    --hover-background-color: #303134;
-    --border-color: #5f6368;
-    --shadow-color: rgba(0, 0, 0, 0.5);
-    --gradient: linear-gradient(135deg, #1a73e8, #004080);
-}
 
-[data-theme="dark"] a {
-    color: var(--primary-color);
-}
 
-[data-theme="dark"] header {
-    background: var(--gradient);
-    color: var(--text-color);
-}
-
-[data-theme="dark"] .nav-links a {
-    color: var(--text-color);
-}
-
-[data-theme="dark"] .dropdown div {
-    background: var(--secondary-color);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 2px 5px var(--shadow-color);
-}
-
-[data-theme="dark"] .dropdown div a {
-    color: var(--text-color);
-}
-
-[data-theme="dark"] .dropdown div a:hover {
-    background: var(--hover-background-color);
-}
-
-[data-theme="dark"] h2 {
-    border-bottom: 3px solid var(--primary-color);
-}
-
-[data-theme="dark"] details[open] summary {
-    color: var(--primary-color);
-}
-
-[data-theme="dark"] footer {
-    background: var(--gradient);
-    color: var(--text-color);
-}
-
-/* Responsive styles */
+/* Responsive Styles */
 @media (max-width: 768px) {
   header {
     padding: 1rem;
