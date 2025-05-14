@@ -256,4 +256,63 @@ export class Flowchart {
     group.style.width  = Math.min(window.innerWidth - left, maxX - minX + pad * 2) + 'px';
     group.style.height = Math.min(window.innerHeight - top, maxY - minY + pad * 2) + 'px';
   }
+
+  /**
+   * Dynamically generates the legend based on the configuration.
+   */
+  generateLegend() {
+    const legendContainer = document.querySelector('.legend');
+    if (!legendContainer) return;
+
+    // Clear existing legend content
+    legendContainer.innerHTML = '';
+
+    // Add title
+    legendContainer.innerHTML = `<strong data-i18n="legend.title">${window.config.legend.title[this.localeManager.current] || 'Legend:'}</strong>`;
+
+    const columns = document.createElement('div');
+    columns.classList.add('legend-columns');
+
+    // Helper to create list items
+    const createList = (items, className) => {
+      const ul = document.createElement('ul');
+      ul.classList.add(className);
+      items.forEach(item => {
+        const li = document.createElement('li');
+        if (item.svg) {
+          li.innerHTML = `<svg class="arrow ${item.class}" width="20" height="20">
+            <path d="M0 5 Q10 0 20 5"/>
+            <polygon points="20,5 15,3 15,7"/>
+          </svg>
+          <span data-i18n="${item.i18n}">${item.label}</span>`;
+        } else {
+          li.innerHTML = `<span class="legend-${item.class}">${item.label}</span>`;
+        }
+        ul.appendChild(li);
+      });
+      return ul;
+    };
+
+    // Left column: Node types
+    const leftItems = ['forcefield', 'analysis', 'utility', 'training', 'server'].map(type => ({
+      class: type,
+      label: window.config.legend[type][this.localeManager.current] || type.charAt(0).toUpperCase() + type.slice(1)
+    }));
+    columns.appendChild(createList(leftItems, 'legend-left'));
+
+    // Right column: Connection types
+    const rightItems = [
+      { class: 'internal', label: window.config.legend.internal[this.localeManager.current] },
+      { class: 'external', label: window.config.legend.external[this.localeManager.current] },
+      ...Object.entries(window.config.connectionTypes).map(([key, value]) => ({
+        class: value.class,
+        label: value.label[this.localeManager.current],
+        svg: true,
+        i18n: `connection.${key}`
+      }))
+    ];
+    columns.appendChild(createList(rightItems, 'legend-right'));
+
+    legendContainer.appendChild(columns);
+  }
 }

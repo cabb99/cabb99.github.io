@@ -229,6 +229,16 @@
         "sequential": { "class":"sequential", "dash":[], "head": "end", "label":{ "en":"Sequential","es":"Secuencial" } },
         "integrable": { "class":"integrable",  "dash":[], "head": "both",   "label":{ "en":"Integrable","es":"Integrable" } },
         "dependency": { "class":"dependency",   "dash":[5,5], "head": "end",   "label":{ "en":"Dependency","es":"Dependencia" } }
-      }
+      },
+    "legend": {
+      "title": { "en": "Legend:", "es": "Leyenda:" },
+      "forcefield": { "en": "Forcefield", "es": "Campo de fuerza" },
+      "analysis": { "en": "Analysis", "es": "Análisis" },
+      "utility": { "en": "Utility", "es": "Utilidad" },
+      "training": { "en": "Training", "es": "Entrenamiento" },
+      "server": { "en": "Server", "es": "Servidor" },
+      "internal": { "en": "Maintained by the Wolynes group", "es": "Mantenido por el grupo Wolynes" },
+      "external": { "en": "Maintained by external collaborators", "es": "Mantenido por colaboradores externos" }
+    }
   }
-  
+

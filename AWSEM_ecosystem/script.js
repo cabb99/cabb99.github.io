@@ -31,7 +31,15 @@ window.addEventListener('configLoaded', () => {
   flowchart = new Flowchart(loader.config, localeM, dragMgr);
   canvas  = new CanvasDrawer(loader.config);
   flowchart.rebuild();
+
+  // Ensure the configuration is globally accessible
+  window.config = loader.config;
+
+  flowchart.generateLegend(); // Generate the legend dynamically
 });
 
 loader.load();
-window.addEventListener('localeChanged', () => flowchart.rebuild());
+window.addEventListener('localeChanged', () => {
+  flowchart.rebuild();
+  flowchart.generateLegend(); // Update the legend for the new locale
+});
