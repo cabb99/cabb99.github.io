@@ -345,6 +345,17 @@ ul li::before {
     content: ''; /* Remove the bullet point */
 }
 
+/* Center align the main title */
+#home h1 {
+  text-align: center;
+}
+
+/* Style for the subtitle */
+#home p {
+  text-align: center;
+  font-style: italic;
+}
+
 /* Dark theme styles */
 [data-theme="dark"] {
     --primary-color: #1a73e8;
