@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const awardsSection = document.querySelector("#awards");
   const mentoringSection = document.querySelector("#mentoring");
   const skillsSection = document.querySelector("#skills");
+  const iframe = document.querySelector('iframe');
+
+  // Function to send locale and theme to iframe
+  function updateIframeSettings() {
+    const locale = document.documentElement.lang || 'en';
+    const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+    iframe.contentWindow.postMessage({ locale, theme }, '*');
+  }
 
   if (langSwitcher) {
     langSwitcher.addEventListener('click', () => {
@@ -24,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.lang = selectedLang;
         localStorage.setItem('locale', selectedLang);
         updateContent();
+        updateIframeSettings();
       });
     });
   }
@@ -33,12 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', newTheme);
+      document.body.classList.toggle('dark-theme', newTheme === 'dark');
       localStorage.setItem('theme', newTheme);
+      updateIframeSettings();
     });
 
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       document.documentElement.setAttribute('data-theme', savedTheme);
+      document.body.classList.toggle('dark-theme', savedTheme === 'dark');
     }
   }
 
@@ -238,15 +250,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Adjust iframe height dynamically
-  const iframe = document.querySelector('.embedded-project');
-  if (iframe) {
-    iframe.addEventListener('load', () => {
+  const embeddedIframe = document.querySelector('.embedded-project');
+  if (embeddedIframe) {
+    embeddedIframe.addEventListener('load', () => {
       try {
-        const iframeContent = iframe.contentWindow.document.body;
-        iframe.style.height = iframeContent.scrollHeight + 'px';
+        const iframeContent = embeddedIframe.contentWindow.document.body;
+        embeddedIframe.style.height = iframeContent.scrollHeight + 'px';
       } catch (error) {
         console.error('Unable to access iframe content:', error);
       }
     });
   }
+
+  // Send initial settings to iframe
+  iframe.addEventListener('load', updateIframeSettings);
 });

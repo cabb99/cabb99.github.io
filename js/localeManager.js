@@ -31,6 +31,19 @@ export class LocaleManager {
 
     this.switcher.value = this.lang;
     this.switcher.addEventListener('change', this.onChange.bind(this));
+
+    window.addEventListener('message', (event) => {
+      if (event.data && event.data.locale) {
+        const newLocale = event.data.locale;
+        if (this.lang !== newLocale) {
+          this.lang = newLocale;
+          localStorage.setItem('locale', this.lang);
+          document.documentElement.lang = this.lang;
+          const localeChangedEvent = new CustomEvent('localeChanged', { detail: { lang: this.lang } });
+          window.dispatchEvent(localeChangedEvent);
+        }
+      }
+    });
   }
 
   /**

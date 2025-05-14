@@ -24,6 +24,19 @@ export class ThemeManager {
     } else {
       console.warn('Theme toggle button not found.');
     }
+
+    window.addEventListener('message', (event) => {
+      if (event.data && event.data.theme) {
+        const newTheme = event.data.theme;
+        if (this.theme !== newTheme) {
+          this.theme = newTheme;
+          localStorage.setItem(this.key, this.theme);
+          document.documentElement.dataset.theme = this.theme;
+          const themeChangedEvent = new CustomEvent('themeChanged', { detail: { theme: this.theme } });
+          window.dispatchEvent(themeChangedEvent);
+        }
+      }
+    });
   }
 
   /**
