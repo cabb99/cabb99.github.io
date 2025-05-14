@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       yearEntry.entries.forEach((entry) => {
         const listItem = document.createElement("li");
-        listItem.innerHTML = `<a href="${entry.url}" target="_blank" style="text-decoration: none; color: var(--primary-color); font-weight: bold;">${entry.title}</a>: ${entry.description}`;
+        listItem.innerHTML = `<a href="${entry.url}" target="_blank" class="project-link">${entry.title}</a>: ${entry.description}`;
         yearList.appendChild(listItem);
       });
 

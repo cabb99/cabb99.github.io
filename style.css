@@ -422,7 +422,17 @@ ul li::before {
   font-style: italic;
 }
 
+/* Added styles for project links */
+.project-link {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
 
+.project-link:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s ease
+}
 
 /* Responsive Styles */
 @media (max-width: 768px) {
