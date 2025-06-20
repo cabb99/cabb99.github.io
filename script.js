@@ -115,7 +115,18 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           case 'education': {
             const li = document.createElement('li');
-            li.innerHTML = `<strong>${entry.degree[lang]}</strong>, ${entry.institution} (${entry.date})<br>${entry.details[lang]}`;
+            let degreeTitle = `<strong>${entry.degree[lang]}</strong>, ${entry.institution} (${entry.date})`;
+            if (entry.dissertation) {
+              const diss = entry.dissertation;
+              let dissTitle = diss.title[lang] || diss.title.en;
+              if (diss.url) {
+                dissTitle = `<a class="dissertation-link" href="${diss.url}" target="_blank">${dissTitle}</a>`;
+              }
+              degreeTitle += `<br><span class="dissertation-title">${dissTitle}</span>`;
+            } else if (entry.details) {
+              degreeTitle += `<br>${entry.details[lang]}`;
+            }
+            li.innerHTML = degreeTitle;
             list.appendChild(li);
             break;
           }

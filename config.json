@@ -44,9 +44,12 @@
           "degree": { "en": "PhD, Systems, Synthetic and Physical Biology", "es": "Doctorado en Sistemas, Biología Sintética y Física" },
           "institution": "Rice University, Houston, TX",
           "date": "Dec 2022",
-          "details": {
-            "en": "Dissertation: Mesoscale Models for the Study of Emergent Behaviors Arising from Protein Interactions",
-            "es": "Disertación: Modelos de mesoescala para el estudio de comportamientos emergentes de interacciones de proteinas"
+          "dissertation": {
+            "title": {
+              "en": "Mesoscale Models for the Study of Emergent Behaviors Arising from Protein Interactions",
+              "es": "Modelos de mesoescala para el estudio de comportamientos emergentes de interacciones de proteinas"
+            },
+            "url": "https://repository.rice.edu/items/f56babe4-9671-4f1f-b5ce-8dce8ea4cf3a"
           }
         },
         {
