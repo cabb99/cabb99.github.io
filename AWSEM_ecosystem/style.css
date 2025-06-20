@@ -1,3 +1,6 @@
+/* =========================
+   CSS Custom Properties (Light Theme)
+   ========================= */
 :root {
     /* General UI */
     --bg: #f9fafc;
@@ -34,6 +37,9 @@
     --node-hover-shadow: rgba(31, 119, 180, 0.5);
 }
 
+/* =========================
+   CSS Custom Properties (Dark Theme)
+   ========================= */
 [data-theme="dark"] {
     /* General UI */
     --bg: #1a202c;
@@ -71,6 +77,9 @@
 }
 
 
+/* =========================
+   Base Styles
+   ========================= */
 body {
     margin: 0;
     background: var(--bg);
@@ -91,12 +100,18 @@ header {
 
 #languageSwitcher { margin-left: 0.5rem; }
 
+/* =========================
+   Layout Containers
+   ========================= */
 .flowchart {
     position: relative;
     width: 100%;
     height: calc(100vh - 4rem);
 }
 
+/* =========================
+   Components: Group Box
+   ========================= */
 .group-box {
     position: absolute;
     border: 1px dashed var(--group-box-border);
@@ -118,6 +133,9 @@ header {
     pointer-events: none;
 }
 
+/* =========================
+   Components: Node
+   ========================= */
 .node {
     position: absolute;
     padding: 0.8rem 1.2rem;
@@ -142,6 +160,9 @@ header {
 .node.server      { background: var(--server); color: #111; }
 .node.external    { border: 2px dashed var(--group-border); }
 
+/* =========================
+   Components: Legend
+   ========================= */
 .legend-forcefield { background: var(--forcefield); color: #111; }
 .legend-analysis    { background: var(--analysis); color: #111; }
 .legend-training    { background: var(--training); color: #111; }
@@ -215,6 +236,9 @@ header {
     font-size: 1rem;
 }
 
+/* =========================
+   Arrows
+   ========================= */
 .arrow path {
     fill: none;
     stroke-width: 2;
@@ -249,6 +273,9 @@ header {
 .arrow-color.integrable  { color: var(--arrow-integrable); }
 .arrow-color.dependency  { color: var(--arrow-dependency); }
 
+/* =========================
+   Responsive Styles
+   ========================= */
 @media (max-width: 768px) {
     .node {
       font-size: 0.75rem;

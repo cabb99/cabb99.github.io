@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* Colors */
+/* =========================
+   CSS Variables & Themes
+   ========================= */
 :root {
     color-scheme: dark light;
     --primary-color: #1a73e8;
@@ -66,7 +68,9 @@
 }
 
 
-/* General Reset */
+/* =========================
+   Base & Reset Styles
+   ========================= */
 * {
     margin: 0;
     padding: 0;
@@ -83,7 +87,9 @@ body {
     padding: 0;
 }
 
-/* Header */
+/* =========================
+   Header & Navigation
+   ========================= */
 header {
     background: var(--gradient);
     color: var(--secondary-color);
@@ -138,7 +144,9 @@ header {
     gap: 1rem;
 }
 
-/* Dropdown */
+/* =========================
+   Dropdown Menu
+   ========================= */
 .dropdown {
     position: relative;
 }
@@ -190,7 +198,9 @@ header {
     cursor: pointer;
 }
 
-/* Hero Section */
+/* =========================
+   Hero Section
+   ========================= */
 .hero {
     display: flex;
     flex-direction: column;
@@ -211,7 +221,9 @@ header {
     color: var(--primary-color);
 }
 
-/* Main Content */
+/* =========================
+   Main Content & Sections
+   ========================= */
 main {
     padding: 2rem;
     max-width: 960px;
@@ -253,7 +265,9 @@ details[open] summary {
     color: var(--primary-color);
 }
 
-/* Footer */
+/* =========================
+   Footer
+   ========================= */
 footer {
     background: var(--gradient);
     color: var(--secondary-color);
@@ -263,7 +277,9 @@ footer {
     box-shadow: 0 -4px 6px var(--shadow-color);
 }
 
-/* Cards */
+/* =========================
+   Cards (Projects & Skills)
+   ========================= */
 .project-card, .skill-card {
     background-color: var(--secondary-color);
     border-radius: 10px;
@@ -281,7 +297,9 @@ footer {
     box-shadow: 0 6px 12px var(--shadow-color);
 }
 
-/* Contact Form */
+/* =========================
+   Contact Form
+   ========================= */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -321,7 +339,9 @@ footer {
     transform: scale(1.05);
 }
 
-/* About and Resume */
+/* =========================
+   About & Resume
+   ========================= */
 .about, .resume {
     padding: 3rem 2rem;
     text-align: center;
@@ -365,7 +385,9 @@ footer {
     margin-bottom: 0.5rem;
 }
 
-/* Embedded Project */
+/* =========================
+   Embedded Project
+   ========================= */
 .embedded-project {
     width: 100%;
     height: 100vh;
@@ -384,7 +406,9 @@ footer {
     display: none;
 }
 
-/* Links */
+/* =========================
+   Links & Lists
+   ========================= */
 a {
     color: var(--primary-color);
     text-decoration: none;
@@ -395,7 +419,6 @@ a:hover {
     color: #002060;
 }
 
-/* Lists */
 ul {
     list-style: none;
     padding: 0;
@@ -411,7 +434,9 @@ ul li::before {
     content: '';
 }
 
-/* Center align the main title */
+/* =========================
+   Home Title & Subtitle
+   ========================= */
 #home h1 {
   text-align: center;
 }
@@ -422,7 +447,9 @@ ul li::before {
   font-style: italic;
 }
 
-/* Added styles for project links */
+/* =========================
+   Project Links
+   ========================= */
 .project-link {
     text-decoration: none;
     color: var(--primary-color);
@@ -434,7 +461,9 @@ ul li::before {
     transition: transform 0.5s ease
 }
 
-/* Responsive Styles */
+/* =========================
+   Responsive Styles
+   ========================= */
 @media (max-width: 768px) {
   header {
     padding: 1rem;
