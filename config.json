@@ -467,13 +467,33 @@
       "entries": [
         {
           "year": 2024,
-          "title": "MolSSI Software Fellow",
-          "issuer": "Molecular Sciences Software Institute (MolSSI)",
+          "title": { "en": "MolSSI Software Fellow", "es": "MolSSI Fellow en desarrollo de Software" },
+          "issuer": { "en": "Molecular Sciences Software Institute (MolSSI)", "es": "Instituto de Software de Ciencias Moleculares (MolSSI)" },
           "description": {
-            "en": "One-year fellowship supporting the development of open-source scientific software in molecular sciences.",
-            "es": "Beca de un año para apoyar el desarrollo de software científico de código abierto en ciencias moleculares."
+            "en": "12-month fellowship for advanced graduate students and postdocs developing open-source software for computational molecular sciences. Trained in software best practices, and mentored by MolSSI Software Scientists",
+            "es": "Beca de 12 meses para estudiantes avanzados de posgrado y postdoctorados que desarrollan software de código abierto para ciencias moleculares computacionales. Capacitado en buenas prácticas de software, y entrenado por científicos de software de MolSSI"
           },
           "link": "https://molssi.org/carlos-bueno-from-excel-automation-to-open-source-innovation/"
+        },
+        {
+          "year": 2021,
+          "title": { "en": "Shirley Chan Student Travel Grant", "es": "Beca de Viaje Shirley Chan" },
+          "issuer": { "en": "American Physical Society (APS) DBIO", "es": "Sociedad Americana de Física (APS) DBIO" },
+          "description": {
+            "en": "Awarded the Shirley Chan Student Travel Grant to attend and present at the APS March Meeting 2021. Recognizes high-quality abstracts in sessions sponsored by DBIO",
+            "es": "Beca de viaje Shirley Chan para asistir y presentar en la APS March Meeting 2021. Reconoce resúmenes de alta calidad en sesiones patrocinadas por DBIO"
+          },
+          "link": "https://ctbp.rice.edu/news/featured-stories/ctbp-graduate-students-win-competitive-travel-grants"
+        },
+        {
+          "year": 2016,
+          "title": { "en": "Silver Medal – iGEM 2016", "es": "Medalla de Plata – iGEM 2016" },
+          "issuer": { "en": "iGEM Foundation", "es": "Fundación iGEM" },
+          "description": {
+            "en": "Advised Rice University’s iGEM team in computational modeling of the violacein biosynthetic pathwayfor non-invasive gut inflammation and cancer detection via photoacoustic imaging.", 
+            "es": "Asesoré al equipo iGEM de Rice University en la modelización computacional de la ruta biosintética de la violaceína sensibles a inflamación para la detección no invasiva de inflamación intestinal y cáncer mediante imagen fotoacústica."
+          },
+          "link": "https://2016.igem.org/Team:Rice" 
         }
       ]
     },

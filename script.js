@@ -167,14 +167,17 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           case 'awards': {
             const li = document.createElement('li');
-            let titleHtml = entry.title;
+            // Support localized title and issuer
+            let titleText = entry.title && typeof entry.title === 'object' ? (entry.title[lang] ?? entry.title['en']) : entry.title;
+            let issuerText = entry.issuer && typeof entry.issuer === 'object' ? (entry.issuer[lang] ?? entry.issuer['en']) : entry.issuer;
+            let titleHtml = titleText;
             if (entry.link) {
-              titleHtml = `<a class="award-title" href="${entry.link}" target="_blank">${entry.title}</a>`;
+              titleHtml = `<a class="award-title" href="${entry.link}" target="_blank">${titleText}</a>`;
             } else {
-              titleHtml = `<span class="award-title">${entry.title}</span>`;
+              titleHtml = `<span class="award-title">${titleText}</span>`;
             }
             let html = `<strong>${entry.year}</strong>: ${titleHtml}.`;
-            if (entry.issuer) html += `<span class='award-issuer'>${entry.issuer}</span>`;
+            if (issuerText) html += `<span class='award-issuer'>${issuerText}</span>`;
             if (entry.description) {
               if (typeof entry.description === 'object') {
                 html += `<br><span class='award-description'>${entry.description[lang] ?? entry.description['en']}</span>`;
