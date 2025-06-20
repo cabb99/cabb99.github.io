@@ -216,7 +216,8 @@
               "journal": "PNAS",
               "volume": "121",
               "issue": "28",
-              "pages": "e2400151121"
+              "pages": "e2400151121",
+              "doi": "https://doi.org/10.1073/pnas.2400151121"
             },
             {
               "authors": "Jaafari H, Bueno C, Schafer NP, Martin J, Morcos F, Wolynes PG",
@@ -224,7 +225,8 @@
               "journal": "PNAS",
               "volume": "121",
               "issue": "21",
-              "pages": "e2322428121"
+              "pages": "e2322428121",
+              "doi": "https://doi.org/10.1073/pnas.2322428121"
             }
           ]
         },
@@ -236,7 +238,8 @@
               "title": "The marionette mechanism of domain-domain communication in the antagonist, agonist, and coactivator responses of the estrogen receptor",
               "journal": "PNAS",
               "volume": "120",
-              "pages": "1–9"
+              "pages": "1–9",
+              "doi": "https://doi.org/10.1073/pnas.2216906120"
             }
           ]
         },
@@ -248,21 +251,24 @@
               "title": "A structural dynamics model for how CPEB3 binding to SUMO2 can regulate translational control in dendritic spines",
               "journal": "PLoS Comp. Bio.",
               "volume": "18",
-              "pages": "e1010657"
+              "pages": "e1010657",
+              "doi": "https://doi.org/10.1371/journal.pcbi.1010657"
             },
             {
               "authors": "Jin S, Bueno C, Lu W, Wang Q, Chen M, Chen X, Wolynes PG, Gao Y",
               "title": "Computationally exploring the mechanism of bacteriophage T7 gp4 helicase translocating along ssDNA",
               "journal": "PNAS",
               "volume": "119",
-              "pages": "1–10"
+              "pages": "1–10",
+              "doi": "https://doi.org/10.1073/pnas.2202239119"
             },
             {
               "authors": "Bueno C, Liman J, Schafer NP, Cheung MS, Wolynes PG",
               "title": "A generalized Flory-Stockmayer kinetic theory of connectivity percolation and rigidity percolation of cytoskeletal networks",
               "journal": "PLoS Comp. Bio.",
               "volume": "18",
-              "pages": "e1010105"
+              "pages": "e1010105",
+              "doi": "https://doi.org/10.1371/journal.pcbi.1010105"
             }
           ]
         },
@@ -274,14 +280,16 @@
               "title": "OpenAWSEM with Open3SPN2: A fast, flexible, and accessible framework for large-scale coarse-grained biomolecular simulations",
               "journal": "PLoS Comp. Bio.",
               "volume": "17",
-              "pages": "1–21"
+              "pages": "1–21",
+              "doi": "https://doi.org/10.1371/journal.pcbi.1008308"
             },
             {
               "authors": "Thadani NN, Zhou Q, Gamas KR, Butler S, Bueno C, Schafer NP, Morcos F, Wolynes PG, Suh J",
               "title": "Frustration and Direct-Coupling Analyses to Predict Formation and Function of Adeno-Associated Virus",
               "journal": "Biophys J.",
               "volume": "120",
-              "pages": "489–503"
+              "pages": "489–503",
+              "doi": "https://doi.org/10.1016/j.bpj.2020.12.018"
             }
           ]
         },
@@ -293,14 +301,16 @@
               "title": "The Role of the Arp2/3 Complex in Shaping the Dynamics and Structures of Branched Actomyosin Networks",
               "journal": "PNAS",
               "volume": "117",
-              "pages": "10825–31"
+              "pages": "10825–31",
+              "doi": "https://doi.org/10.1073/pnas.1922494117"
             },
             {
               "authors": "Shikai J, Contessoto VG, Chen M, Schafer NP, Lu W, Chen X, Bueno C, Hajitaheri A, Sirovetz BJ, Davtyan A, Papoian GA, Tsai MY, Wolynes PG",
               "title": "AWSEM-Suite: A Protein Structure Prediction Server Based on Template-Guided, Coevolutionary-Enhanced Optimized Folding Landscapes",
               "journal": "Nucleic Acids Res.",
               "volume": "48",
-              "pages": "W25–W30"
+              "pages": "W25–W30",
+              "doi": "https://doi.org/10.1093/nar/gkaa356"
             }
           ]
         },
@@ -312,7 +322,8 @@
               "title": "Assemblies of calcium/calmodulin-dependent kinase II with actin and their dynamic regulation by calmodulin in dendritic spines",
               "journal": "PNAS",
               "volume": "116",
-              "pages": "18937–18942"
+              "pages": "18937–18942",
+              "doi": "https://doi.org/10.1073/pnas.1911452116"
             }
           ]
         },
@@ -324,7 +335,8 @@
               "title": "Resolving the NFκB hetero-dimer binding paradox: Strain and frustration guide the binding of dimeric transcription factors",
               "journal": "J. Am. Chem. Soc.",
               "volume": "2017",
-              "pages": "jacs.7b08741"
+              "pages": "jacs.7b08741",
+              "doi": "https://doi.org/10.1021/jacs.7b08741"
             }
           ]
         },
@@ -337,7 +349,8 @@
               "journal": "Veterinary Record Case Reports",
               "volume": "4",
               "issue": "1",
-              "pages": "e000292"
+              "pages": "e000292",
+              "doi": "https://doi.org/10.1136/vetreccr-2016-000292"
             }
           ]
         },
@@ -349,7 +362,8 @@
               "title": "Nicotinamidase/pyrazinamidase of Mycobacterium tuberculosis forms homo-dimers stabilized by disulfide bonds",
               "journal": "Tuberculosis (Edinb)",
               "volume": "2014",
-              "pages": "Pii: S1472-9792(14)20554-3"
+              "pages": "Pii: S1472-9792(14)20554-3",
+              "doi": "https://doi.org/10.1016/j.tube.2014.08.008"
             }
           ]
         }
