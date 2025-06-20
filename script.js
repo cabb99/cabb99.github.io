@@ -167,13 +167,35 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           case 'awards': {
             const li = document.createElement('li');
-            li.textContent = `${entry.year}: ${entry.title}`;
+            let titleHtml = entry.title;
+            if (entry.link) {
+              titleHtml = `<a class="award-title" href="${entry.link}" target="_blank">${entry.title}</a>`;
+            } else {
+              titleHtml = `<span class="award-title">${entry.title}</span>`;
+            }
+            let html = `<strong>${entry.year}</strong>: ${titleHtml}.`;
+            if (entry.issuer) html += `<span class='award-issuer'>${entry.issuer}</span>`;
+            if (entry.description) {
+              if (typeof entry.description === 'object') {
+                html += `<br><span class='award-description'>${entry.description[lang] ?? entry.description['en']}</span>`;
+              } else {
+                html += `<br><span class='award-description'>${entry.description}</span>`;
+              }
+            }
+            li.innerHTML = html;
             list.appendChild(li);
             break;
           }
           case 'mentoring': {
             const li = document.createElement('li');
-            li.textContent = `${entry.year}: ${entry.role}, ${entry.program}`;
+            let details = `<strong>${entry.year}</strong>: ${entry.role}`;
+            if (entry.program) details += `, <em>${entry.program}</em>`;
+            if (entry.institution) details += `, ${entry.institution}`;
+            if (entry.organization) details += `, ${entry.organization}`;
+            if (entry.department) details += `, ${entry.department}`;
+            if (entry.lab) details += `, ${entry.lab}`;
+            if (entry.location) details += `, ${entry.location}`;
+            li.innerHTML = details;
             list.appendChild(li);
             break;
           }

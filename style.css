@@ -462,6 +462,41 @@ ul li::before {
 }
 
 /* =========================
+   Awards Section
+   ========================= */
+.award-title {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.award-issuer {
+  color: var(--text-color);
+  font-size: 1em;
+  font-weight: 400;
+  display: inline;
+  margin-left: 0.5em;
+}
+
+.award-description {
+  font-size: 1em;
+  color: var(--text-color);
+  display: block;
+  margin-top: 0.2em;
+}
+
+.award-link {
+  font-size: 1em;
+  color: var(--primary-color);
+  text-decoration: underline;
+  margin-top: 0.2em;
+  display: inline-block;
+}
+
+.award-link:hover {
+  color: #002060;
+}
+
+/* =========================
    Responsive Styles
    ========================= */
 @media (max-width: 768px) {

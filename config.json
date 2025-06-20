@@ -467,7 +467,13 @@
       "entries": [
         {
           "year": 2024,
-          "title": "MolSSI Software Fellow"
+          "title": "MolSSI Software Fellow",
+          "issuer": "Molecular Sciences Software Institute (MolSSI)",
+          "description": {
+            "en": "One-year fellowship supporting the development of open-source scientific software in molecular sciences.",
+            "es": "Beca de un año para apoyar el desarrollo de software científico de código abierto en ciencias moleculares."
+          },
+          "link": "https://molssi.org/carlos-bueno-from-excel-automation-to-open-source-innovation/"
         }
       ]
     },
@@ -487,8 +493,8 @@
         {
           "year": 2021,
           "role": "Instructor",
-          "program": "Design your micro-world: Build computational theoretical models for protein simulations",
-          "organization": "Science Clubs",
+          "program": "Diseña tu micro-mundo: Construye modelos en computadora para simular proteínas.",
+          "organization": "Science-clubs",
           "location": "Perú"
         },
         {
@@ -502,6 +508,42 @@
           "year": "2015-2019",
           "role": "Mentor",
           "program": "Serendipity mentorship program"
+        },
+        {
+          "year": 2016,
+          "role": "Teaching Assistant",
+          "program": "Physical Biology"
+        },
+        {
+          "year": 2016,
+          "role": "Advisor",
+          "program": "Rice Igem Team",
+          "institution": "Rice University",
+          "location": "Houston, TX USA"
+        },
+        {
+          "year": 2014,
+          "role": "Course Instructor",
+          "program": "Introduction to Bioinformatics",
+          "department": "Philosophy and Science Department",
+          "institution": "UPCH",
+          "location": "Lima, Peru"
+        },
+        {
+          "year": 2013,
+          "role": "Course Instructor",
+          "program": "In-silico design and experimental testing of immunogenic epitopes as vaccine candidates",
+          "lab": "Bioinformatics and Molecular Biology Lab",
+          "institution": "UPCH",
+          "location": "Lima, Peru"
+        },
+        {
+          "year": "2012-2013",
+          "role": "Teaching Assistant",
+          "program": "Organic Chemistry",
+          "department": "Department of Chemistry",
+          "institution": "UPCH",
+          "location": "Lima, Peru"
         }
       ]
     },
