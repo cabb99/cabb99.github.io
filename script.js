@@ -148,6 +148,15 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
           }
           case 'projects': {
+            // Only add AWSEM ecosystem project link ONCE at the top
+            if (Array.isArray(sectionsCfg.projects.entries)) {
+              const awsem = sectionsCfg.projects.entries.find(e => e.title && e.title.en === 'AWSEM ecosystem');
+              if (awsem && list.childElementCount === 0) {
+                const li = document.createElement('li');
+                li.innerHTML = `<a href="${awsem.url}" target="_blank">${awsem.title[lang] || awsem.title.en}</a> – ${awsem.description[lang] || awsem.description.en}`;
+                list.appendChild(li);
+              }
+            }
             if (entry.year && Array.isArray(entry.entries)) {
               const yearLi = document.createElement('li');
               yearLi.innerHTML = `<strong>${entry.year}</strong>`;

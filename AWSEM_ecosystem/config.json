@@ -29,6 +29,17 @@
         "tooltip": { "en": "AWESOME: Methods for optimization of the AWSEM potential", "es": "AWESOME: Metodos para optimizacion de parametros de AWSEM" }
       },
       {
+        "id": "molselect",
+        "group": "Utilities",
+        "type": "utility",
+        "external": false,
+        "link": "https://github.com/cabb99/molselect",
+        "x": 400,
+        "y": 100,
+        "label": { "en": "MolSelect", "es": "MolSelect" },
+        "tooltip": { "en": "MolSelect: A parser for VMD-like molecular selections", "es": "MolSelect: Analizador sintáctico de selecciones moleculares como VMD" }
+      },
+      {
         "id": "molscene",
         "group": "Utilities",
         "type": "utility",
@@ -213,6 +224,7 @@
 
         { "from": "opensmog",     "to": "qvalue",       "type": "sequential" },
 
+        { "from": "molselect",     "to": "molscene",    "type": "dependency" },
         { "from": "molscene",     "to": "open3spn2",    "type": "dependency" },
         { "from": "molscene",     "to": "openfit",      "type": "dependency" },
         { "from": "molscene",     "to": "openactin",    "type": "dependency" },

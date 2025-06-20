@@ -379,6 +379,17 @@
       },
       "entries": [
         {
+          "title": {
+            "en": "AWSEM ecosystem",
+            "es": "Ecosistema AWSEM"
+          },
+          "url": "AWSEM_ecosystem/index.html",
+          "description": {
+            "en": "Interactive platform and documentation for the AWSEM force field and related tools.",
+            "es": "Plataforma interactiva y documentación para el campo de fuerza AWSEM y herramientas relacionadas."
+          }
+        },
+        {
           "year": 2024,
           "entries": [
             {
