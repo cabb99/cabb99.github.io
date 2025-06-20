@@ -91,6 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
           secCfg.title?.[lang] ?? secCfg.title?.en;
       }
 
+      if (id === 'about') {
+        // Update <p> for about section
+        const pEl = secEl.querySelector('p');
+        if (pEl) {
+          pEl.innerHTML = secCfg.content?.[lang] ?? secCfg.content?.en;
+        }
+        return;
+      }
+
       // Update list‐type content
       const list = secEl.querySelector('ul');
       if (!list || !secCfg.entries) return;
