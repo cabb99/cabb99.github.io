@@ -6,6 +6,15 @@
     <title>Carlos Bueno</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg" href="images/Logo_small.svg">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+    <script>
+      (function() {
+        emailjs.init({
+          publicKey: "p9kKNkf4Xx5GSlHT6"
+        });
+      })();
+    </script>
     <script defer="" src="script.js"></script>
   </head>
   <body>
@@ -238,15 +247,19 @@
       </section>
       <section id="contact">
         <h2>Contact</h2>
-        <form class="contact-form">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required="">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required="">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" required=""></textarea>
-          <button type="submit">Send</button>
-        </form>
+      <form id="contact-form" class="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="from_name" type="text" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="from_email" type="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Send</button>
+        <div id="form-status" aria-live="polite"></div>
+      </form>
       </section>
     </main>
     <footer>

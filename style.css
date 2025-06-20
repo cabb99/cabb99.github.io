@@ -226,7 +226,7 @@ header {
    ========================= */
 main {
     padding: 2rem;
-    max-width: 960px;
+    max-width: 1100px;
     margin: auto;
 }
 
@@ -499,7 +499,7 @@ ul li::before {
 /* =========================
    Responsive Styles
    ========================= */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   header {
     padding: 1rem;
   }
@@ -557,4 +557,4 @@ ul li::before {
   .header-controls {
     align-items: flex-start;
   }
-}
+} */

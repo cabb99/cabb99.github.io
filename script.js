@@ -240,3 +240,24 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch {}
   });
 });
+
+window.onload = function() {
+      const form   = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+      
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // service ID, template ID, and the form element ("this")
+        emailjs.sendForm('service_r9rvim5', 'template_8dhhg3m', this)
+          .then(() => {
+            status.textContent = 'Message sent! Thanks for reaching out.';
+            form.reset();
+          })
+          .catch((err) => {
+            console.error('FAILED...', err);
+            status.textContent = 'Oops—something went wrong. Please try again later.';
+          });
+      });
+    };
+
