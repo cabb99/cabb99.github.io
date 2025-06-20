@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const iframe = document.querySelector('iframe.embedded-project') || document.querySelector('iframe');
   const storage = window.localStorage;
   const sectionIds = [
+    'home',
     'about','education','experience','projects',
     'publications','awards','mentoring','skills'
   ];
@@ -89,6 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (titleEl) {
         titleEl.textContent =
           secCfg.title?.[lang] ?? secCfg.title?.en;
+      }
+
+      // Update subtitle for home section
+      if (id === 'home' && secCfg.subtitle) {
+        const subtitleEl = secEl.querySelector('.home-subtitle');
+        if (subtitleEl) {
+          subtitleEl.textContent = secCfg.subtitle[lang] ?? secCfg.subtitle.en;
+        }
       }
 
       if (id === 'about') {
