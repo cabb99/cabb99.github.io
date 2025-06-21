@@ -232,9 +232,17 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
           }
           case 'skills': {
-            const li = document.createElement('li');
-            li.textContent = entry;
-            list.appendChild(li);
+            // Clear the section and create a .cards container
+            secEl.innerHTML = '<h2>Skills</h2>';
+            const cards = document.createElement('div');
+            cards.className = 'cards';
+            (Array.isArray(secCfg.entries) ? secCfg.entries : [secCfg.entries]).forEach(entry => {
+              const card = document.createElement('div');
+              card.className = 'card';
+              card.textContent = entry;
+              cards.appendChild(card);
+            });
+            secEl.appendChild(cards);
             break;
           }
         }
