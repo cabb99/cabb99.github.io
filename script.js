@@ -267,6 +267,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Hamburger menu toggle for mobile nav
+const menuBtn = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+if (menuBtn && navLinks) {
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+}
+
 window.onload = function() {
       const form   = document.getElementById('contact-form');
       const status = document.getElementById('form-status');
