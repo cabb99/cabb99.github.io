@@ -537,6 +537,74 @@ ul li::before {
 }
 
 /* =========================
+   Experience Section
+   ========================= */
+#experience {
+  /* Section container */
+  margin-bottom: 2.5rem;
+}
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+.experience-card {
+  background: var(--secondary-color);
+  border: 1.5px solid var(--border-color);
+  border-left: 6px solid var(--primary-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  padding: 1.5rem 1.5rem 1.2rem 2rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  position: relative;
+}
+.experience-card:hover {
+  box-shadow: 0 6px 18px var(--shadow-color);
+  border-color: #004080;
+}
+.experience-card strong {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+.experience-card .exp-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+.experience-card .exp-org {
+  font-size: 1rem;
+  color: var(--text-color);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+.experience-card .exp-date {
+  font-size: 0.97rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.experience-card ul {
+  margin: 0.2rem 0 0.2rem 1.2rem;
+  padding: 0;
+  list-style: disc inside;
+}
+.experience-card ul li {
+  margin-bottom: 0.3em;
+  padding-left: 0;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+@media (max-width: 700px) {
+  .experience-card {
+    padding: 1rem 0.7rem 1rem 1rem;
+  }
+}
+
+/* =========================
    Responsive Styles
    ========================= */
 

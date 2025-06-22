@@ -140,11 +140,33 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
           }
           case 'experience': {
-            entry.roles.forEach(role => {
-              const li = document.createElement('li');
-              li.innerHTML = `<strong>${role.title[lang]}</strong>, ${entry.institution} (${role.dates[lang]})<br>${role.responsibilities[lang].join('<br>')}`;
-              list.appendChild(li);
+            // Remove any existing .experience-list
+            let expList = secEl.querySelector('.experience-list');
+            if (expList) expList.remove();
+            // Build the card-based HTML as in index.html
+            expList = document.createElement('div');
+            expList.className = 'experience-list';
+            // Loop through all entries and all roles
+            (sectionsCfg.experience.entries || []).forEach(entry => {
+              (entry.roles || []).forEach(role => {
+                const card = document.createElement('div');
+                card.className = 'experience-card';
+                card.innerHTML = `
+                  <span class="exp-title">${role.title[lang]}</span>
+                  <span class="exp-org">${entry.institution}</span>
+                  <span class="exp-date">${role.dates[lang]}</span>
+                  <ul>
+                    ${role.responsibilities[lang].map(item => `<li>${item}</li>`).join('')}
+                  </ul>
+                `;
+                expList.appendChild(card);
+              });
             });
+            // Remove all children except h2
+            Array.from(secEl.children).forEach(child => {
+              if (child.tagName !== 'H2') secEl.removeChild(child);
+            });
+            secEl.appendChild(expList);
             break;
           }
           case 'projects': {
