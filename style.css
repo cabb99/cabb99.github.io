@@ -605,6 +605,62 @@ ul li::before {
 }
 
 /* =========================
+   Education Section
+   ========================= */
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+.education-card {
+  background: var(--secondary-color);
+  border: 1.5px solid var(--border-color);
+  border-left: 6px solid var(--primary-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  padding: 1.5rem 1.5rem 1.2rem 2rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  position: relative;
+}
+.education-card:hover {
+  box-shadow: 0 6px 18px var(--shadow-color);
+  border-color: #004080;
+}
+.education-card .edu-degree {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.2rem;
+  display: block;
+}
+.education-card .edu-inst {
+  font-size: 1rem;
+  color: var(--text-color);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+.education-card .edu-date {
+  font-size: 0.97rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.education-card .edu-diss {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-top: 0.3rem;
+  display: block;
+}
+@media (max-width: 700px) {
+  .education-card {
+    padding: 1rem 0.7rem 1rem 1rem;
+  }
+}
+
+/* =========================
    Responsive Styles
    ========================= */
 

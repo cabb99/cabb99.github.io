@@ -123,20 +123,41 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
           }
           case 'education': {
-            const li = document.createElement('li');
-            let degreeTitle = `<strong>${entry.degree[lang]}</strong>, ${entry.institution} (${entry.date})`;
-            if (entry.dissertation) {
-              const diss = entry.dissertation;
-              let dissTitle = diss.title[lang] || diss.title.en;
-              if (diss.url) {
-                dissTitle = `<a class="dissertation-link" href="${diss.url}" target="_blank">${dissTitle}</a>`;
+            // Remove any existing .education-list
+            let eduList = secEl.querySelector('.education-list');
+            if (eduList) eduList.remove();
+            eduList = document.createElement('div');
+            eduList.className = 'education-list';
+            (sectionsCfg.education.entries || []).forEach(entry => {
+              const card = document.createElement('div');
+              card.className = 'education-card';
+              let degree = entry.degree[lang] || entry.degree.en || entry.degree;
+              let inst = entry.institution;
+              let date = entry.date;
+              let diss = '';
+              if (entry.dissertation && entry.dissertation.title) {
+                let dissTitle = entry.dissertation.title[lang] || entry.dissertation.title.en || entry.dissertation.title;
+                if (entry.dissertation.url) {
+                  diss = `<span class="edu-diss">Dissertation: <a class="dissertation-link" href="${entry.dissertation.url}" target="_blank">${dissTitle}</a></span>`;
+                } else {
+                  diss = `<span class="edu-diss">Dissertation: ${dissTitle}</span>`;
+                }
+              } else if (entry.details && entry.details[lang]) {
+                diss = `<span class="edu-diss">${entry.details[lang]}</span>`;
               }
-              degreeTitle += `<br><span class="dissertation-title">${dissTitle}</span>`;
-            } else if (entry.details) {
-              degreeTitle += `<br>${entry.details[lang]}`;
-            }
-            li.innerHTML = degreeTitle;
-            list.appendChild(li);
+              card.innerHTML = `
+                <span class="edu-degree">${degree}</span>
+                <span class="edu-inst">${inst}</span>
+                <span class="edu-date">${date}</span>
+                ${diss}
+              `;
+              eduList.appendChild(card);
+            });
+            // Remove all children except h2
+            Array.from(secEl.children).forEach(child => {
+              if (child.tagName !== 'H2') secEl.removeChild(child);
+            });
+            secEl.appendChild(eduList);
             break;
           }
           case 'experience': {
