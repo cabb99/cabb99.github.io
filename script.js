@@ -77,6 +77,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Unified Card Style Skills Viewer Renderer ---
+  function renderSkillsViewer(skillsData, lang) {
+    const container = document.getElementById('skills-container');
+    if (!container) return;
+    container.innerHTML = '';
+    const cards = document.createElement('div');
+    cards.className = 'cards';
+    (skillsData || []).forEach(section => {
+      // Always use English for data-category
+      let categoryEn = section.category?.en || section.category;
+      let items = [];
+      if (section.subcategories) {
+        section.subcategories.forEach(sub => {
+          (sub.items || []).forEach(item => {
+            items.push({
+              label: item[lang] || item.en || item,
+              category: categoryEn
+            });
+          });
+        });
+      } else if (section.items) {
+        (section.items || []).forEach(item => {
+          items.push({
+            label: item[lang] || item.en || item,
+            category: categoryEn
+          });
+        });
+      }
+      items.forEach(skill => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.setAttribute('data-category', skill.category); // always English
+        const span = document.createElement('span');
+        span.textContent = skill.label;
+        card.appendChild(span);
+        cards.appendChild(card);
+      });
+    });
+    container.appendChild(cards);
+  }
+
   // Generic renderer for all sections
   function render(sectionsCfg) {
     const lang = document.documentElement.lang || 'en';
@@ -98,6 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (subtitleEl) {
           subtitleEl.textContent = secCfg.subtitle[lang] ?? secCfg.subtitle.en;
         }
+      }
+
+      // --- Render skills viewer before list/entries check ---
+      if (id === 'skills') {
+        renderSkillsViewer(sectionsCfg.skills, lang);
+        return;
       }
 
       if (id === 'about') {
@@ -272,20 +319,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.location) details += `, ${entry.location}`;
             li.innerHTML = details;
             list.appendChild(li);
-            break;
-          }
-          case 'skills': {
-            // Clear the section and create a .cards container
-            secEl.innerHTML = '<h2>Skills</h2>';
-            const cards = document.createElement('div');
-            cards.className = 'cards';
-            (Array.isArray(secCfg.entries) ? secCfg.entries : [secCfg.entries]).forEach(entry => {
-              const card = document.createElement('div');
-              card.className = 'card';
-              card.textContent = entry;
-              cards.appendChild(card);
-            });
-            secEl.appendChild(cards);
             break;
           }
         }

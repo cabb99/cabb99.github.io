@@ -581,21 +581,130 @@
         }
       ]
     },
-    "skills": {
-      "title": {
-        "en": "Skills",
-        "es": "Habilidades"
+    "skills": [
+      {
+        "category": { "en": "Scientific Computing", "es": "Computación Científica" },
+        "subcategories": [
+          {
+            "name": { "en": "Modeling & Simulation", "es": "Modelado y Simulación" },
+            "items": [
+              { "en": "OpenMM", "es": "OpenMM" },
+              { "en": "Numba", "es": "Numba" },
+              { "en": "PyTorch", "es": "PyTorch" },
+              { "en": "Homology Modeling", "es": "Modelado por Homología" },
+              { "en": "Molecular Dynamics", "es": "Dinámicas Moleculares" },
+              { "en": "Monte Carlo", "es": "Monte Carlo" },
+              { "en": "Molecular Docking", "es": "Acoplamiento Molecular" },
+              { "en": "SimPy", "es": "SimPy" }
+            ]
+          },
+          {
+            "name": { "en": "Data & Analysis", "es": "Datos y Análisis" },
+            "items": [
+              { "en": "NumPy", "es": "NumPy" },
+              { "en": "Pandas", "es": "Pandas" },
+              { "en": "Matplotlib", "es": "Matplotlib" },
+              { "en": "SciPy", "es": "SciPy" },
+              { "en": "Seaborn", "es": "Seaborn" },
+              { "en": "Jupyter", "es": "Jupyter" },
+              { "en": "SymPy", "es": "SymPy" },
+              { "en": "MDAnalysis", "es": "MDAnalysis" },
+              { "en": "Biopython", "es": "Biopython" },
+              { "en": "Scikit-learn", "es": "Scikit-learn" },
+              { "en": "NetworkX", "es": "NetworkX" }
+            ]
+          },
+          {
+            "name": { "en": "Visualization Tools", "es": "Herramientas de Visualización" },
+            "items": [
+              { "en": "VMD", "es": "VMD" },
+              { "en": "ChimeraX", "es": "ChimeraX" },
+              { "en": "PyMOL", "es": "PyMOL" },
+              { "en": "Matplotlib", "es": "Matplotlib" },
+              { "en": "Plotly", "es": "Plotly" },
+              { "en": "Dash", "es": "Dash" },
+              { "en": "Tableau", "es": "Tableau" }
+            ]
+          },
+          {
+            "name": { "en": "HPC & Cloud", "es": "HPC y Nube" },
+            "items": [
+              { "en": "Slurm", "es": "Slurm" },
+              { "en": "HPC", "es": "HPC" },
+              { "en": "GCP", "es": "GCP" },
+              { "en": "Docker", "es": "Docker" }
+            ]
+          }
+        ]
       },
-      "entries": [
-        "Python",
-        "Git",
-        "Linux (Advanced)",
-        "MATLAB",
-        "C++ (Intermediate)",
-        "Javascript",
-        "R",
-        "SQL (Basic)"
-      ]
-    }
+      {
+        "category": { "en": "Software Engineering", "es": "Ingeniería de Software" },
+        "subcategories": [
+          {
+            "name": { "en": "Languages", "es": "Lenguajes" },
+            "items": [
+              { "en": "Python", "es": "Python" },
+              { "en": "C++", "es": "C++" },
+              { "en": "JavaScript", "es": "JavaScript" },
+              { "en": "SQL", "es": "SQL" },
+              { "en": "Bash/Shell", "es": "Bash/Shell" },
+              { "en": "R", "es": "R" },
+              { "en": "MATLAB", "es": "MATLAB" }
+            ]
+          },
+          {
+            "name": { "en": "Development Tools", "es": "Herramientas de Desarrollo" },
+            "items": [
+              { "en": "Git", "es": "Git" },
+              { "en": "GitHub", "es": "GitHub" },
+              { "en": "Conda", "es": "Conda" },
+              { "en": "Pytest", "es": "Pytest" },
+              { "en": "Sphinx", "es": "Sphinx" },
+              { "en": "Github Actions", "es": "Github Actions" }
+            ]
+          }
+        ]
+      },
+      {
+        "category": { "en": "Research & Collaboration", "es": "Investigación y Colaboración" },
+        "items": [
+          { "en": "Project Management", "es": "Gestión de Proyectos" },
+          { "en": "Research", "es": "Investigación" },
+          { "en": "Scientific Writing", "es": "Redacción Científica" },
+          { "en": "Interdiciplinary Collaboration", "es": "Colaboración interdisciplinaria" },
+          { "en": "Documentation", "es": "Documentación" },
+          { "en": "Code Review", "es": "Revisión de Código" },
+          { "en": "Open Source", "es": "Código Abierto" }
+        ]
+      },
+      {
+        "category": { "en": "Domain Expertise", "es": "Especialización" },
+        "subcategories": [
+          {
+            "name": { "en": "Life Sciences", "es": "Ciencias de la Vida" },
+            "items": [
+              { "en": "Bioinformatics", "es": "Bioinformática" },
+              { "en": "Pharmacology", "es": "Farmacología" },
+              { "en": "Biophysics", "es": "Biofísica" },
+              { "en": "Medicinal Chemistry", "es": "Química Medicinal" },
+              { "en": "Drug Discovery", "es": "Descubrimiento de Fármacos" },
+              { "en": "Cheminformatics", "es": "Quimioinformática" },
+              { "en": "Systems Biology", "es": "Biología de Sistemas" },
+              { "en": "Synthetic Biology", "es": "Biología Sintética" },
+              { "en": "Structural Biology", "es": "Biología Estructural" },
+              { "en": "Computational Biology", "es": "Biología Computacional" }
+            ]
+          }
+        ]
+      },
+      {
+        "category": { "en": "Languages", "es": "Idiomas" },
+        "items": [
+          { "en": "English", "es": "Inglés" },
+          { "en": "Spanish", "es": "Español" },
+          { "en": "French", "es": "Francés" }
+        ]
+      }
+    ]
   }
 }
