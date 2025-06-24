@@ -43,6 +43,8 @@ export class DragManager {
     el._didDrag = false;
     el.style.touchAction = 'none';
     el.addEventListener('pointerdown', (e) => {
+      // Prevent drag if the pointerdown is on the legend toggle button or its children
+      if (e.target.closest('.legend-toggle')) return;
       e.preventDefault();
       el._didDrag = false;
       this.active = {

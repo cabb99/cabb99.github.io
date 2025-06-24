@@ -264,12 +264,31 @@ export class Flowchart {
     const legendContainer = document.querySelector('.legend');
     if (!legendContainer) return;
 
-    // Clear existing legend content
-    legendContainer.innerHTML = '';
+    // Remove all children except the toggle button
+    Array.from(legendContainer.children).forEach(child => {
+      if (!child.classList.contains('legend-toggle')) legendContainer.removeChild(child);
+    });
 
-    // Add title
-    legendContainer.innerHTML = `<strong data-i18n="legend.title">${window.config.legend.title[this.localeManager.current] || 'Legend:'}</strong>`;
+    // Add or update the title outside legend-content
+    let title = legendContainer.querySelector('.legend-title');
+    if (!title) {
+      title = document.createElement('strong');
+      title.className = 'legend-title';
+      title.setAttribute('data-i18n', 'legend.title');
+      legendContainer.appendChild(title);
+    }
+    title.textContent = window.config.legend.title[this.localeManager.current] || 'Legend:';
 
+    // Use a dedicated content wrapper inside the legend
+    let content = legendContainer.querySelector('.legend-content');
+    if (!content) {
+      content = document.createElement('div');
+      content.className = 'legend-content';
+      legendContainer.appendChild(content);
+    }
+    content.innerHTML = '';
+
+    // Add columns inside legend-content
     const columns = document.createElement('div');
     columns.classList.add('legend-columns');
 
@@ -313,6 +332,6 @@ export class Flowchart {
     ];
     columns.appendChild(createList(rightItems, 'legend-right'));
 
-    legendContainer.appendChild(columns);
+    content.appendChild(columns);
   }
 }

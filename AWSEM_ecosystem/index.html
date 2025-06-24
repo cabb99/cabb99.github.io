@@ -20,34 +20,7 @@
   <div class="flowchart" id="flowchart"></div>
 
   <!-- Static Legend -->
-<div class="legend" >
-    <strong data-i18n="legend.title">Legend:</strong>
-    <div class="legend-columns">
-        <ul class="legend-left">
-            <li><span class="legend-forcefield">Forcefield</span></li>
-            <li><span class="legend-analysis">Analysis</span></li>
-            <li><span class="legend-utility">Utility</span></li>
-            <li><span class="legend-training">Training</span></li>
-            <li><span class="legend-server">Server</span></li>
-        </ul>
-        <ul class="legend-right">
-            <li><span class="legend-internal">Maintained by the Wolynes group</span></li>
-            <li><span class="legend-external">Maintained by external collaborators</span></li>
-            <li>
-                <svg class="arrow sequential" width="20" height="20"><path d="M0 5 Q10 0 20 5"/><polygon points="20,5 15,3 15,7"/></svg>
-                <span data-i18n="connection.sequential">Sequential</span>
-            </li>
-            <li>
-                <svg class="arrow integrable" width="20" height="20"><path d="M0 5 Q10 0 20 5"/><polygon points="20,5 15,3 15,7"/></svg>
-                <span data-i18n="connection.integrable">Integrable</span>
-            </li>
-            <li>
-                <svg class="arrow dependency" width="20" height="20"><path d="M0 5 Q10 0 20 5"/><polygon points="20,5 15,3 15,7"/></svg>
-                <span data-i18n="connection.dependency">Dependency</span>
-            </li>
-        </ul>
-    </div>
-</div>
+<div class="legend" id="legend"></div>
   
   <script type="module" src="script.js"></script>
 </body>

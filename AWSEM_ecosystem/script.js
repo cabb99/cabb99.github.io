@@ -27,19 +27,66 @@ const dragMgr = new DragManager(
 const legend = document.querySelector('.legend');
 if (legend) dragMgr.makeDraggable(legend);
 
+function injectLegendToggle() {
+  const legendBar = document.getElementById('legend');
+  if (!legendBar) { console.log('No legendBar found'); return; }
+  // Remove existing toggle if present
+  const oldToggle = document.getElementById('legend-toggle');
+  if (oldToggle) oldToggle.remove();
+
+  // Always set minimized class from localStorage before rendering toggle
+  const minimized = localStorage.getItem('legendMinimized') === 'true';
+  if (minimized) legendBar.classList.add('minimized');
+  else legendBar.classList.remove('minimized');
+
+  // Create toggle button
+  const btn = document.createElement('button');
+  btn.className = 'legend-toggle';
+  btn.id = 'legend-toggle';
+  // Set icon and label based on actual class
+  const isMin = legendBar.classList.contains('minimized');
+  btn.setAttribute('aria-label', isMin ? 'Show legend' : 'Minimize legend');
+  btn.title = isMin ? 'Show legend' : 'Minimize legend';
+  btn.style.position = 'absolute';
+  btn.style.top = '8px';
+  btn.style.right = '8px';
+  btn.style.left = 'auto';
+  // Icon
+  const icon = document.createElement('span');
+  icon.id = 'legend-toggle-icon';
+  icon.innerHTML = isMin ? '&#x25A1;' : '&#x2212;';
+  btn.appendChild(icon);
+  // Handler
+  btn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    legendBar.classList.toggle('minimized');
+    const nowMin = legendBar.classList.contains('minimized');
+    icon.innerHTML = nowMin ? '&#x25A1;' : '&#x2212;';
+    btn.title = nowMin ? 'Show legend' : 'Minimize legend';
+    btn.setAttribute('aria-label', btn.title);
+    localStorage.setItem('legendMinimized', nowMin);
+    console.log('Legend toggle clicked. Minimized:', nowMin, legendBar);
+  });
+  // Always insert as the first child of the legend container
+  legendBar.insertBefore(btn, legendBar.firstChild);
+  console.log('Legend toggle button inserted');
+}
+
 window.addEventListener('configLoaded', () => {
   flowchart = new Flowchart(loader.config, localeM, dragMgr);
   canvas  = new CanvasDrawer(loader.config);
   flowchart.rebuild();
-
-  // Ensure the configuration is globally accessible
   window.config = loader.config;
-
-  flowchart.generateLegend(); // Generate the legend dynamically
+  flowchart.generateLegend();
+  injectLegendToggle(); // Always call last
 });
 
 loader.load();
 window.addEventListener('localeChanged', () => {
   flowchart.rebuild();
-  flowchart.generateLegend(); // Update the legend for the new locale
+  flowchart.generateLegend();
+  injectLegendToggle(); // Always call last
 });
+
+console.log('AWSEM legend script loaded');
