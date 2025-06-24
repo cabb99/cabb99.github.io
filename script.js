@@ -24,22 +24,43 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.toggle('dark-theme', th === 'dark');
   }
 
-  // Language menu toggle & selection
-  document.getElementById('language-switch-footer')
-    ?.addEventListener('click', () => {
-      const menu = document.querySelector('#language-switch-footer + .origin-top-right');
-      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  // Language dropdown toggle & selection
+  const dropdown = document.querySelector('.dropdown');
+  if (dropdown) {
+    const btn  = dropdown.querySelector('button');
+    const menu = dropdown.querySelector('.menu');
+
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+      btn.setAttribute('aria-expanded', dropdown.classList.contains('open'));
     });
-  document.querySelectorAll('#language-switch-footer + .origin-top-right a')
-    .forEach(a => a.addEventListener('click', e => {
-      e.preventDefault();
-      const lang = a.textContent.includes('Español') ? 'es' : 'en';
-      document.documentElement.lang = lang;
-      storage.setItem('locale', lang);
-      render(window.config.sections);
-      renderHeader(window.config.header);
-      postSettings();
-    }));
+
+    document.addEventListener('click', () => {
+      if (dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const img = a.querySelector('img');
+        btn.querySelector('img').src = img.src;
+        btn.querySelector('img').alt = img.alt;
+        dropdown.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+        // ...locale logic here if needed...
+        const lang = a.textContent.includes('Español') ? 'es' : 'en';
+        document.documentElement.lang = lang;
+        storage.setItem('locale', lang);
+        render(window.config.sections);
+        renderHeader(window.config.header);
+        postSettings();
+      });
+    });
+  }
 
   // Theme toggle
   document.getElementById('theme-toggle')

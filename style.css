@@ -240,8 +240,41 @@ header {
     background: var(--hover-background-color);
 }
 
-.dropdown:hover div {
-    display: block;
+
+.dropdown .menu {
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity .15s ease, transform .15s ease;
+  position: absolute;
+  min-width: 120px;
+  z-index: 100;
+  display: none;
+}
+.dropdown.open .menu {
+  opacity: 1;
+  transform: translateY(0);
+  display: block;
+}
+/* .dropdown:focus-within .menu {
+  display: block;
+} */
+
+.dropdown .menu a[aria-checked="true"] {
+  font-weight: bold;
+}
+
+.dropdown .menu a {
+  display: flex;
+  align-items: center;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-color);
+}
+.dropdown .menu a img {
+  margin-right: 0.5em;
+  width: 20px;
+  height: 14px;
 }
 
 #theme-toggle {
