@@ -852,3 +852,93 @@ ul li::before {
 [data-theme="dark"] .subcategory-title {
   background: #005fa3;
 }
+
+/* =========================
+   Social Links
+   ========================= */
+.social-list {
+  padding: 0;
+  margin: 1.5rem auto 2rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  width: 400px;
+  max-width: 100%;
+}
+.social-list li {
+  list-style: none;
+  font-size: 32px;
+  border: solid #585858 2px;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, color 0.3s, border 0.3s, transform 0.2s;
+  background: #fff;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+}
+.social-list li:hover {
+  transform: scale(1.12) rotate(-6deg);
+}
+.social-list a {
+  color: #222;
+}
+.social-list svg {
+  fill: #222;
+}
+
+#github:hover {
+  background: #000;
+  border-color: #000;
+}
+
+#github:hover svg {
+  fill: #fff;
+}
+
+#linkedin:hover {
+  background: #0077b5;
+  border-color: #0077b5;
+}
+
+#linkedin:hover svg {
+  fill: #fff;
+}
+
+#scholar:hover {
+  background: #fff;
+  border-color: #fff;
+}
+
+#scholar:hover svg {
+  fill: #4285f4;
+}
+
+.social-list a:hover {
+  color: inherit;
+}
+
+.social-list svg {
+  width: 36px;
+  height: 36px;
+  fill: currentColor;
+  display: block;
+  margin: auto;
+  pointer-events: none;
+}
+@media (max-width: 600px) {
+  .social-list li {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  .social-list svg {
+    width: 22px;
+    height: 22px;
+  }
+}
